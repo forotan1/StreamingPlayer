@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1024256170618",
+    "firebase_url": "https://tvlive-7ee5d.firebaseio.com",
+    "project_id": "tvlive-7ee5d",
+    "storage_bucket": "tvlive-7ee5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024256170618:android:f92ba5e207a19bb6",
+        "android_client_info": {
+          "package_name": "com.musa.iptv4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024256170618-vbv37hokopm911a8uj044c63gs15qkcs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABp42m1lBRZnUGSwYnyElNTK9j3jtCvFI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

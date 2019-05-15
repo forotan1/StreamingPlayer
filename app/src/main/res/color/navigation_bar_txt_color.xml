@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false" android:color="@color/tint_default_bg"/>
+    <item android:color="@color/tint_selected_bg"/>
+</selector>

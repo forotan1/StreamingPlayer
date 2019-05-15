@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="language_name">
+        <item>English</item>
+        <item>Tiếng Việt</item>
+        <item>پارسی</item>
+        <item>Deutsch</item>
+        <item>Auto</item>
+    </string-array>
+    <string-array name="language">
+        <item>en</item>
+        <item>vi</item>
+        <item>fa</item>
+        <item>de</item>
+        <item>auto</item>
+    </string-array>
+</resources>

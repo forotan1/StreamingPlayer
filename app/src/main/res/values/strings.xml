@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tv Live Plus 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_add_favourite">Add to Favourites</string>
+    <string name="action_play_next">Play </string>
+    <string name="action_tv_guid"> Guid </string>
+    <string name="backdrop_title">Live TV</string>
+    <string name="backdrop_subtitle">Watch Free Live TV</string>
+    <string name="af_tab">Afghan</string>
+    <string name="iran_tab">iran</string>
+    <string name="sport_tab">sport</string>
+    <string name="other_tab">other</string>
+    <string name="stream_name">Stream naem</string>
+    <string name="live_tv">Live TV</string>
+    <string name="ip_tv">IP TV</string>
+    <string name="about">About</string>
+    <string name="update_item">Update</string>
+    <string name="delete_item">Delete</string>
+    <string name="play_item">Play</string>
+
+    <string name="pref_language_label">Language</string>
+    <string name="dialog_cancel">Cancel</string>
+
+
+    <string-array name="pref_language_titles">
+        <item>English</item>
+        <item>Deutsch</item>
+        <item>پارسی</item>
+    </string-array>
+    <string-array name="pref_language_values">
+        <item>en</item>
+        <item>de</item>
+        <item>fa</item>
+    </string-array>
+    <string name="app_change_language">Change Language</string>
+    <string name="loading_langauge">Applying English as app language</string>
+    <string name="text_dialog_ok">Ok</string>
+    <string name="app_language">English</string>
+    <string name="language_titile">Change Language</string>
+
+
+</resources>

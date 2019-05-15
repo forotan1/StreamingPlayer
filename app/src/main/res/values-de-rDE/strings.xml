@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tv Live Plus 3</string>
+    <string name="action_settings">Einstellung</string>
+    <string name="action_add_favourite">Add to Favourites</string>
+    <string name="action_play_next">Play </string>
+    <string name="action_tv_guid"> Guid </string>
+    <string name="backdrop_title">Live TV</string>
+    <string name="backdrop_subtitle">kostenlos Live TV</string>
+    <string name="af_tab">Afghan</string>
+    <string name="iran_tab">iran</string>
+    <string name="sport_tab">sport</string>
+    <string name="other_tab">sonstige</string>
+    <string name="stream_name">Stream name</string>
+    <string name="live_tv">Live TV</string>
+    <string name="ip_tv">IP TV</string>
+    <string name="about">Mehr</string>
+    <string name="update_item">Update</string>
+    <string name="delete_item">Delete</string>
+    <string name="play_item">Play</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="app_change_language">Sprache Andern</string>
+    <string name="app_language">Deutsch</string>
+    <string name="pref_language_label">Sprache</string>
+    <string name="text_dialog_ok">Okay</string>
+    <string name="language_titile">Sprache Andern</string>
+    <string name="loading_langauge">warte bitte</string>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#191919</color>
+    <color name="colorPrimaryDark">#2b2b2b</color>
+    <color name="colorAccent">#ec5e32</color>
+    <color name="colorWhite">#fff</color>
+
+    <color name="colorGrey">#c3c3c3 </color>
+    <color name="colorCard">#5a80a6</color>
+    <color name="viewBg">#f1f5f8</color>
+    <color name="colorBlack">#000000</color>
+
+    <color name="lightBlue">#18BC9C</color>
+    <color name="lightBluelight">#24e1bc</color>
+    <color name="card_bg">#2b2b2b</color>
+    <color name="layout_card_bg">#2c3e50</color>
+    <color name="title_bg">#1a1a1a</color>
+    <color name="semiTransparentWhite">#40FFFFFF</color>
+    <color name="dark_orange">#bc3f18</color>
+    <color name="placeholder_bg">#dddddd</color>
+    <color name="item_name">#0c0c0c</color>
+    <color name="description">#1a1a1a</color>
+    <color name="chef">#777</color>
+    <color name="timestamp">#777</color>
+
+
+    <!--Icon -->
+
+    <color name="icon_bg">#2b2b2b</color>
+    <color name="icon_text_bg">#1a1a1a</color>
+
+    <!--Navigation Bar-->
+
+    <color name="naviBar_bg">#2b2b2b</color>
+    <color name="tint_selected_bg">#ec5e32</color>
+    <color name="tint_default_bg">#808080</color>
+
+</resources>
