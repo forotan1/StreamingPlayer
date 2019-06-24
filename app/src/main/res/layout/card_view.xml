@@ -26,9 +26,7 @@
             android:innerRadius="0dp"
             app:cardCornerRadius="50dp"
             app:cardElevation="0dp"
-
-
-            card_view:cardBackgroundColor="@color/naviBar_bg">
+            card_view:cardBackgroundColor="?attr/card_bg">
 
             <RelativeLayout
                 android:layout_width="match_parent"

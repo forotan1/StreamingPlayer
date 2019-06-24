@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -16,6 +18,7 @@ import com.musa.iptv4.Iptv.IpTv;
 import com.musa.iptv4.LiveTv.LiveTvActivity;
 import com.musa.iptv4.R;
 import com.musa.iptv4.Utilities.BottomNavigationViewHelper;
+import com.musa.iptv4.Utilities.SharedPref;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,18 +33,46 @@ public class AboutActivity extends AppCompatActivity   {
     CircularImageView circularImageView;
     TextView changeLang;
     private AlertDialog mUnitSettingDialog;
-
+    protected Switch mySwitch;
+    SharedPref sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPref = new SharedPref(this);
+        if (sharedPref.loadNightMode()== true) {
+            setTheme(R.style.LightAppTheme);
+        }
+        else setTheme(R.style.AppTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        mySwitch = findViewById(R.id.my_switch);
+
+        if (sharedPref.loadNightMode()==true) {
+            mySwitch.setChecked(true);
+        }
+
+        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    sharedPref.setNightModeState(true);
+                    restartApp();
+                }
+                else {
+                    sharedPref.setNightModeState(false);
+                    restartApp();
+                }
+            }
+        });
+
+
 
         changeLang = findViewById(R.id.change_language);
         changeLang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openChangeLanguage();
 
             }
         });
@@ -81,53 +112,12 @@ public class AboutActivity extends AppCompatActivity   {
 
     }
 
-
-    public void openChangeLanguage() {
-        final String[] arrayName = LanguageUtils.getLanguageNameList(this);
-        final String[] array = LanguageUtils.getLanguageList(this);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.app_change_language)
-                .setSingleChoiceItems(arrayName, LanguageUtils.getIndexLanguage(this),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String languageFirst = LanguageUtils.getLanguage();
-                                if (which == arrayName.length - 1) {
-                                    SpManager.getInstance().putString(LanguageUtils.LANGUAGE,
-                                            LanguageUtils.getLanguageLocal());
-                                    SpManager.getInstance()
-                                            .putBoolean(LanguageUtils.IS_AUTO_LANGUAGE, true);
-                                } else {
-                                    SpManager.getInstance().putString(LanguageUtils.LANGUAGE, array[which]);
-                                    SpManager.getInstance()
-                                            .putBoolean(LanguageUtils.IS_AUTO_LANGUAGE, false);
-                                }
-                                mUnitSettingDialog.dismiss();
-                                if (!TextUtils.equals(array[which], languageFirst)) {
-                                    restartActivity();
-                                }
-                            }
-                        })
-                .setNegativeButton(R.string.text_dialog_ok, null);
-        mUnitSettingDialog = builder.create();
-        mUnitSettingDialog.show();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (SpManager.getInstance().getBoolean(LanguageUtils.IS_RESTART, false)) {
-            SpManager.getInstance().putBoolean(LanguageUtils.IS_RESTART, false);
-            restartActivity();
-        }
-    }
-
-    private void restartActivity() {
-        LanguageUtils.changeLanguageType(new Locale(LanguageUtils.getLanguage()));
-        Intent intent = new Intent(this, Loading_activity.class);
-        startActivity(intent);
+    private void restartApp() {
+        Intent i = new Intent(getApplicationContext(), AboutActivity.class);
+        startActivity(i);
         finish();
     }
+
 
 
 

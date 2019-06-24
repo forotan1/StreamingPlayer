@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="?attr/backroundcolor"
     tools:context=".About.AboutActivity"
     android:orientation="vertical">
 
@@ -16,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:orientation="vertical"
-            android:background="@color/card_bg">
+            android:background="?attr/colorPrimary">
 
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:layout_width="100dp"
@@ -31,7 +32,7 @@
                 android:text="App name"
                 android:layout_gravity="center_horizontal"
                 android:textSize="20sp"
-                android:textColor="@color/colorAccent"
+                android:textColor="?attr/textcolor"
                 android:textStyle="bold"/>
 
 
@@ -43,13 +44,13 @@
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="200dp"
-            android:background="@color/colorPrimary">
+            card_view:cardBackgroundColor="?attr/card_bg">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Contact and Suport"
                 android:textStyle="bold"
-                android:textColor="@color/colorAccent"
+                android:textColor="?attr/textcolor"
                 android:textSize="15dp"
                 android:layout_gravity="top|center"
                 />
@@ -62,26 +63,28 @@
         android:layout_height="120dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        card_view:cardBackgroundColor="?attr/card_bg"
+
         >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Setting:"
                 android:textStyle="bold"
-                android:textColor="@color/colorAccent"
+                android:textColor="?attr/textcolor"
                 android:textSize="15dp"
                 android:layout_gravity="center"
                 />
 
         </LinearLayout>
-        <FrameLayout
+        <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_margin="15dp">
 
@@ -93,6 +96,7 @@
                 android:textStyle="bold"
                 android:id="@+id/change_language"
                 android:gravity="left"
+                android:textColor="?attr/textcolor"
                 />
             <TextView
                 android:id="@+id/change_lang"
@@ -101,39 +105,22 @@
                 android:layout_gravity="end|center_horizontal"
                 android:text="English"
                 android:textStyle="bold"
+                android:textColor="?attr/textcolor"
                 />
 
-
-
-
-        </FrameLayout>
-        <FrameLayout
-            android:layout_marginTop="70dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="vertical"
-
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Light Mode"
-                android:textStyle="bold"
-                android:id="@+id/dark"
-                android:gravity="left"
-                android:layout_marginHorizontal="15dp"
-                />
 
             <Switch
-                android:layout_width="wrap_content"
+                android:id="@+id/my_switch"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="15dp"/>
+                android:layout_margin="8dp"
+                android:textColor="?attr/textcolor"
+
+                android:text="@string/light_mode"/>
 
 
 
-        </FrameLayout>
+        </LinearLayout>
 
 
 
@@ -143,13 +130,14 @@
         android:layout_width="380dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        card_view:cardBackgroundColor="?attr/card_bg">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Donation"
             android:textStyle="bold"
-            android:textColor="@color/colorAccent"
+            android:textColor="?attr/textcolor"
             android:textSize="15dp"
             android:layout_gravity="top|center"
             />
@@ -176,7 +164,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/bottomNavView_Bar"
-            android:background="@color/naviBar_bg"
+            android:background="?attr/naviBar_bg"
             app:menu="@menu/bottom_navigation_menu"
             style="@style/BottomNavigation"
             app:labelVisibilityMode="labeled">

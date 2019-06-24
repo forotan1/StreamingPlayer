@@ -38,6 +38,7 @@
     <string name="text_dialog_ok">Ok</string>
     <string name="app_language">English</string>
     <string name="language_titile">Change Language</string>
+    <string name="light_mode">Light Mode</string>
 
 
 </resources>
