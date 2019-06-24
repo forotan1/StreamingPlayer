@@ -19,10 +19,5 @@
     <string name="delete_item">Delete</string>
     <string name="play_item">Play</string>
     <string name="dialog_cancel">Cancel</string>
-    <string name="app_change_language">Sprache Andern</string>
-    <string name="app_language">Deutsch</string>
-    <string name="pref_language_label">Sprache</string>
-    <string name="text_dialog_ok">Okay</string>
-    <string name="language_titile">Sprache Andern</string>
-    <string name="loading_langauge">warte bitte</string>
+    <string name="light_mode">Light Mode</string>
 </resources>

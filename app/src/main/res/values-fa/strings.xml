@@ -20,9 +20,6 @@
     <string name="play_item">Play</string>
     <string name="pref_language_label">زبان</string>
     <string name="dialog_cancel">Cancel</string>
-    <string name="app_change_language">تغیر زبان</string>
-    <string name="app_language">پارسی</string>
-    <string name="language_titile">تغیر زبان</string>
-    <string name="text_dialog_ok">تایید</string>
-    <string name="loading_langauge">منتظر باشد که زبان به پارسی تفیر کند</string>
+
+    <string name="light_mode">Light Mode</string>
 </resources>

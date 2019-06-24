@@ -19,26 +19,11 @@
     <string name="delete_item">Delete</string>
     <string name="play_item">Play</string>
 
-    <string name="pref_language_label">Language</string>
     <string name="dialog_cancel">Cancel</string>
-
-
-    <string-array name="pref_language_titles">
-        <item>English</item>
-        <item>Deutsch</item>
-        <item>پارسی</item>
-    </string-array>
-    <string-array name="pref_language_values">
-        <item>en</item>
-        <item>de</item>
-        <item>fa</item>
-    </string-array>
-    <string name="app_change_language">Change Language</string>
-    <string name="loading_langauge">Applying English as app language</string>
-    <string name="text_dialog_ok">Ok</string>
-    <string name="app_language">English</string>
-    <string name="language_titile">Change Language</string>
     <string name="light_mode">Light Mode</string>
+
+
+
 
 
 </resources>
