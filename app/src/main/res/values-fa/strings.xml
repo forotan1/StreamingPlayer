@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">iptv4</string>
+    <string name="app_name">شبکه</string>
     <string name="action_settings">تنظیمات</string>
     <string name="action_add_favourite">Add to Favourites</string>
     <string name="action_play_next">Play </string>
@@ -18,8 +18,8 @@
     <string name="update_item">Update</string>
     <string name="delete_item">Delete</string>
     <string name="play_item">Play</string>
-    <string name="pref_language_label">زبان</string>
     <string name="dialog_cancel">Cancel</string>
 
-    <string name="light_mode">Light Mode</string>
+    <string name="light_mode">حالت روشن</string>
+    <string name="sugessted_links">سایت های پیشنهادی</string>
 </resources>

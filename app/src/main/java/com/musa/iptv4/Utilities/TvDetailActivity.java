@@ -26,22 +26,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import static com.jarvanmo.exoplayerview.orientation.OnOrientationChangedListener.SENSOR_LANDSCAPE;
 import static com.jarvanmo.exoplayerview.orientation.OnOrientationChangedListener.SENSOR_PORTRAIT;
 import static com.musa.iptv4.LiveTv.Afghanistan.AfghanTab.EXTRA_ABOUT_TV;
-import static com.musa.iptv4.LiveTv.Afghanistan.AfghanTab.EXTRA_COVER;
 import static com.musa.iptv4.LiveTv.Afghanistan.AfghanTab.EXTRA_ICON;
 import static com.musa.iptv4.LiveTv.Afghanistan.AfghanTab.EXTRA_LIVE_URL;
 import static com.musa.iptv4.LiveTv.Afghanistan.AfghanTab.EXTRA_TITLE;
 
 public class TvDetailActivity extends AppCompatActivity {
-    private static final String TAG = "TvDetailActivity";
 
     private ExoVideoView videoView;
 
-    private TextView titleView, tvInfo;
     CircularImageView circularImageView;
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +42,13 @@ public class TvDetailActivity extends AppCompatActivity {
 
             Intent intent = getIntent();
             String tvTitle= intent.getStringExtra(EXTRA_TITLE);
-            String tvCover = intent.getStringExtra(EXTRA_COVER);
             String tvIcon = intent.getStringExtra(EXTRA_ICON);
             String aboutTv = intent.getStringExtra(EXTRA_ABOUT_TV);
             String liveUrl = intent.getStringExtra(EXTRA_LIVE_URL);
 
 
-        titleView = findViewById(R.id.detailA_tv_title);
-        tvInfo = findViewById(R.id.tv_info);
+        TextView titleView = findViewById(R.id.detailA_tv_title);
+        TextView tvInfo = findViewById(R.id.tv_info);
 
         circularImageView = findViewById(R.id.about_profile_pic);
 
@@ -115,23 +107,6 @@ public class TvDetailActivity extends AppCompatActivity {
 
 
         videoView.play(mediaSource);
-
-
-
-
-
-
-       // String ipLink = intent.getStringExtra("key_url");
-
-       // Intent getLink = getIntent();
-       // String urlLink = getLink.getStringExtra("play_key");
-
-
-
-
-
-
-
 
     }
 
@@ -194,7 +169,6 @@ public class TvDetailActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //you should release the player created by ExoPlayerView
         videoView.releasePlayer();
     }
 

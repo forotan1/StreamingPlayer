@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/iptv_root"
     tools:context=".Iptv.IpTv">
 
     <RelativeLayout
@@ -57,6 +58,23 @@
                                 android:text="@string/backdrop_subtitle"
                                 android:textColor="@color/tint_selected_bg"
                                 android:textSize="@dimen/backdrop_title" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="3dp"
+                                android:background="@color/naviBar_bg"
+                                android:layout_alignParentBottom="true"
+                                />
+
+
+                            <TextView
+                                android:id="@+id/sugessted_links"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sugessted_links"
+                                android:textColor="@color/tint_selected_bg"
+                                android:textSize="@dimen/sugested_link" />
+
 
 
 

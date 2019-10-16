@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Tv Live Plus 3</string>
+    <string name="app_name">Live TV DE</string>
     <string name="action_settings">Einstellung</string>
     <string name="action_add_favourite">Add to Favourites</string>
     <string name="action_play_next">Play </string>
@@ -19,5 +19,6 @@
     <string name="delete_item">Delete</string>
     <string name="play_item">Play</string>
     <string name="dialog_cancel">Cancel</string>
-    <string name="light_mode">Light Mode</string>
+    <string name="light_mode">Hill </string>
+    <string name="sugessted_links">mehr medien</string>
 </resources>

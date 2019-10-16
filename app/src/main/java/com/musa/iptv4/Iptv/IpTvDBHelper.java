@@ -45,7 +45,7 @@ public class IpTvDBHelper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
     /**create record**/
-    public void saveNewPerson(iModel iModel) {
+    public void saveNewPerson(Imodel iModel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -60,7 +60,7 @@ public class IpTvDBHelper extends SQLiteOpenHelper {
     }
 
     /**Query records, give options to filter results**/
-    public List<iModel> peopleList(String filter) {
+    public List<Imodel> peopleList(String filter) {
         String query;
         if(filter.equals("")){
             //regular query
@@ -70,47 +70,47 @@ public class IpTvDBHelper extends SQLiteOpenHelper {
             query = "SELECT  * FROM " + TABLE_NAME + " ORDER BY "+ filter;
         }
 
-        List<iModel> iModelLinkedList = new LinkedList<>();
+        List<Imodel> imodelLinkedList = new LinkedList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-        iModel iModel;
+        Imodel iModel;
 
         if (cursor.moveToFirst()) {
             do {
-                iModel = new iModel();
+                iModel = new Imodel();
 
-                iModel.setId(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)));
+                iModel.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
                 iModel.setiTitle(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_TITLE)));
                 iModel.setiUrl(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_URL)));
                 iModel.setiAbout(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_ABOUT)));
                 iModel.setImage(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_ICON)));
-                iModelLinkedList.add(iModel);
+                imodelLinkedList.add(iModel);
             } while (cursor.moveToNext());
         }
 
 
-        return iModelLinkedList;
+        return imodelLinkedList;
     }
 
     /**Query only 1 record**/
-    public iModel getPerson(long id){
+    public Imodel getPerson(long id){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT  * FROM " + TABLE_NAME + " WHERE _id="+ id;
         Cursor cursor = db.rawQuery(query, null);
 
-        iModel receivedIModel = new iModel();
+        Imodel receivedImodel = new Imodel();
         if(cursor.getCount() > 0) {
             cursor.moveToFirst();
 
-            receivedIModel.setiTitle(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_TITLE)));
-            receivedIModel.setiUrl(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_URL)));
-            receivedIModel.setiAbout(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_ABOUT)));
-            receivedIModel.setImage(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_ICON)));
+            receivedImodel.setiTitle(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_TITLE)));
+            receivedImodel.setiUrl(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_URL)));
+            receivedImodel.setiAbout(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_ABOUT)));
+            receivedImodel.setImage(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_ICON)));
         }
 
 
 
-        return receivedIModel;
+        return receivedImodel;
 
 
     }
@@ -121,15 +121,15 @@ public class IpTvDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         db.execSQL("DELETE FROM "+TABLE_NAME+" WHERE _id='"+id+"'");
-        Toast.makeText(context, "Deleted successfully.", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(context, "Deleted successfully.", Toast.LENGTH_SHORT).show();
 
     }
 
     /**update record**/
-    public void updatePersonRecord(long personId, Context context, iModel updatedperson) {
+    public void updatePersonRecord(long personId, Context context, Imodel updatedperson) {
         SQLiteDatabase db = this.getWritableDatabase();
         //you can use the constants above instead of typing the column names
-        db.execSQL("UPDATE  "+TABLE_NAME+" SET name ='"+ updatedperson.getiTitle() + "', age ='" + updatedperson.getiUrl()+ "', occupation ='"+ updatedperson.getiAbout() + "', image ='"+ updatedperson.getImage() + "'  WHERE _id='" + personId + "'");
+        db.execSQL("UPDATE  "+TABLE_NAME+" SET iTitle ='"+ updatedperson.getiTitle() + "', iUrl ='" + updatedperson.getiUrl()+ "', iAbout ='"+ updatedperson.getiAbout() + "', image ='"+ updatedperson.getImage() + "'  WHERE _id='" + personId + "'");
         Toast.makeText(context, "Updated successfully.", Toast.LENGTH_SHORT).show();
 
 

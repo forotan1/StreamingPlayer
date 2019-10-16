@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp">
 
 
-    <TextView
-        android:id="@+id/titleUpdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update user"
-        android:textAlignment="center" />
+
 
     <EditText
         android:id="@+id/userNameUpdate"
@@ -21,15 +14,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Name" />
+        android:hint="Media Name" />
 
-    <EditText
-        android:id="@+id/userAgeUpdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="Age" />
+
 
     <EditText
         android:id="@+id/userOccupationUpdate"
@@ -37,7 +24,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Occupation" />
+        android:hint="Media Link" />
 
     <EditText
         android:id="@+id/userProfileImageLinkUpdate"
@@ -45,13 +32,15 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textUri"
-        android:hint="Image profile url" />
-
-    <Button
-        android:id="@+id/updateUserButton"
+        android:hint="Image for media" />
+    <EditText
+        android:id="@+id/userAgeUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update User"/>
+        android:ems="10"
+        android:inputType="number"
+        android:hint="About media" />
+
 
 </LinearLayout>
 

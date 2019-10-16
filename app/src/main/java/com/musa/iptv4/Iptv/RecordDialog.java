@@ -27,16 +27,9 @@ public class RecordDialog extends AppCompatDialogFragment {
 
 
 
-    private EditText name, stream, image;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
-
-
-
-
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.add_layout_dialog, null);
@@ -58,10 +51,6 @@ public class RecordDialog extends AppCompatDialogFragment {
                     }
                 });
 
-        //name = view.findViewById(R.id.name);
-        //stream = view.findViewById(R.id.stream);
-        //image = view.findViewById(R.id.image);
-        //init
         mNameEditText = view.findViewById(R.id.ip_tv_title);
         mAgeEditText = view.findViewById(R.id.ip_tv_url);
         mOccupationEditText = view.findViewById(R.id.ip_tv_about);
@@ -77,6 +66,7 @@ public class RecordDialog extends AppCompatDialogFragment {
         String age = mAgeEditText.getText().toString().trim();
         String occupation = mOccupationEditText.getText().toString().trim();
         String image = mImageEditText.getText().toString().trim();
+
         dbHelper = new IpTvDBHelper(getContext());
 
         if(name.isEmpty()){
@@ -100,8 +90,8 @@ public class RecordDialog extends AppCompatDialogFragment {
             Toast.makeText(getContext(), "You must enter an image link", Toast.LENGTH_SHORT).show();
         }
 
-        //create new iModel
-        iModel iModel = new iModel(name, age, occupation, image);
+        //create new Imodel
+        Imodel iModel = new Imodel(name, age, occupation, image);
         dbHelper.saveNewPerson(iModel);
 
         //finally redirect back home

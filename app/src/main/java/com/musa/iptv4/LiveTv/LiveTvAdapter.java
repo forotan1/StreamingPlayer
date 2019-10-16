@@ -83,7 +83,6 @@ public class LiveTvAdapter extends RecyclerView.Adapter<LiveTvAdapter.MyViewHold
     }
 
 
-
     @Override
     public int getItemCount() {
         return live_ModelList.size();

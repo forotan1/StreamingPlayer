@@ -21,12 +21,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import java.util.Objects;
+
 public class LiveTvActivity extends AppCompatActivity {
 
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
-
-
 
 
     @Override
@@ -42,7 +42,7 @@ public class LiveTvActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_af);
+        Objects.requireNonNull(tabLayout.getTabAt(0)).setIcon(R.drawable.ic_af);
         tabLayout.getTabAt(0).setText(getText(R.string.af_tab));
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_azadi);
         tabLayout.getTabAt(1).setText(getText(R.string.af_tab));

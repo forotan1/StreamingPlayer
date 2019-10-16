@@ -1,5 +1,6 @@
 package com.musa.iptv4.Iptv;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -15,12 +16,13 @@ import com.musa.iptv4.LiveTv.LiveTvActivity;
 import com.musa.iptv4.R;
 import com.musa.iptv4.Utilities.BottomNavigationViewHelper;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class IpTv extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class IpTv extends AppCompatActivity{
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -28,6 +30,14 @@ public class IpTv extends AppCompatActivity {
     private IpTvAdapter adapter;
     private String filter = "";
     private TextView addStation;
+    private Context mContext;
+    private ArrayList<Imodel> iPtvList;
+
+    public static final String EXTRA_TITLE = "tvTitle";
+    public static final String EXTRA_COVER = "tvCover";
+    public static final String EXTRA_ICON = "tvIcon";
+    public static final String EXTRA_LIVE_URL = "liveUrl";
+    public static final String EXTRA_ABOUT_TV = "aboutTV";
 
 
 
@@ -45,6 +55,7 @@ public class IpTv extends AppCompatActivity {
         // use a linear layout manager
         RecyclerView.LayoutManager tLayoutManager = new GridLayoutManager(this, getSpanCount());
         mRecyclerView.setLayoutManager(tLayoutManager);
+        iPtvList = new ArrayList<>();
 
 
 
@@ -69,28 +80,25 @@ public class IpTv extends AppCompatActivity {
         MenuItem menuItem =menu.getItem(1);
         menuItem.setChecked(true);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.ip_tv :
-                        break;
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.ip_tv :
+                    break;
 
-                    case R.id.about:
-                        Intent ipIntent = new Intent(IpTv.this, AboutActivity.class);
-                        startActivity(ipIntent);
-                        break;
+                case R.id.about:
+                    Intent ipIntent = new Intent(IpTv.this, AboutActivity.class);
+                    startActivity(ipIntent);
+                    break;
 
-                    case R.id.live_tv:
-                        Intent aboutIntent = new Intent(IpTv.this, LiveTvActivity.class);
-                        startActivity(aboutIntent);
-                        break;
+                case R.id.live_tv:
+                    Intent aboutIntent = new Intent(IpTv.this, LiveTvActivity.class);
+                    startActivity(aboutIntent);
+                    break;
 
-                }
-
-
-                return false;
             }
+
+
+            return false;
         });
 
 
@@ -123,6 +131,7 @@ public class IpTv extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         adapter.notifyDataSetChanged();
+
     }
 
     private int getSpanCount() {
@@ -142,4 +151,18 @@ public class IpTv extends AppCompatActivity {
 
 
     }
+
+
+//    @Override
+//    public void onItemClick(int position) {
+//        Intent detailIntent = new Intent(IpTv.this, TvDetailActivity.class);
+//        Imodel clickItem = iPtvList.get(position);
+//        detailIntent.putExtra(EXTRA_TITLE, clickItem.getiTitle());
+//        detailIntent.putExtra(EXTRA_ICON, clickItem.getImage());
+//        detailIntent.putExtra(EXTRA_ABOUT_TV, clickItem.getiAbout());
+//        detailIntent.putExtra(EXTRA_LIVE_URL, clickItem.getiUrl());
+//        startActivity(detailIntent);
+//        finish();
+//
+//    }
 }

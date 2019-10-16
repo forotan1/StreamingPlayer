@@ -47,7 +47,7 @@
                     android:layout_alignParentTop="true">
 
                     <ImageView
-                        android:id="@+id/tabvTvIcon"
+                        android:id="@+id/ip_tv_card_icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:scaleType="fitXY"
@@ -70,7 +70,7 @@
                         android:id="@+id/line"/>
      -->
                     <TextView
-                        android:id="@+id/tabTvTitle"
+                        android:id="@+id/ip_tv_card_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/icon_text_bg"

@@ -23,13 +23,13 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@drawable/khurshid"
                 android:layout_gravity="center_horizontal"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="App name"
+                android:text="@string/app_name"
                 android:layout_gravity="center_horizontal"
                 android:textSize="20sp"
                 android:textColor="?attr/textcolor"
@@ -45,15 +45,33 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="200dp"
             card_view:cardBackgroundColor="?attr/card_bg">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Contact and Suport"
-                android:textStyle="bold"
-                android:textColor="?attr/textcolor"
-                android:textSize="15dp"
-                android:layout_gravity="top|center"
-                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact and Suport"
+                    android:textStyle="bold"
+                    android:textColor="?attr/textcolor"
+                    android:textSize="15dp"
+
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/ic_share_black_24dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/share_app"/>
+
+
+
+            </LinearLayout>
+
 
         </androidx.cardview.widget.CardView>
 

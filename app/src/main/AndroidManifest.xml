@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Utilities.TvDetailActivity"></activity>
+        <activity android:name=".Utilities.TvDetailActivity" />
         <activity android:name=".Iptv.IpTv" />
         <activity android:name=".About.AboutActivity" />
         <activity

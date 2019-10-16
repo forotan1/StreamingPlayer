@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -8,20 +9,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ip_tv_title"
-        android:hint="Enter a name"/>
+        android:hint="@string/enter_a_name"
+        tools:ignore="Autofill"/>
 
     <EditText
         android:id="@+id/ip_tv_url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Paste a valid stream or media Link"
+        android:hint="@string/paste_a_valid_stream"
         android:layout_below="@+id/ip_tv_title"
         />
     <EditText
         android:id="@+id/ip_tv_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Past an icon Link"
+        android:hint="@string/past_an_icon"
         android:layout_below="@+id/ip_tv_url"/>
 
 
@@ -30,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textUri"
-        android:hint="Description"
+        android:hint="@string/description"
         android:layout_below="@id/ip_tv_icon"/>
 
 

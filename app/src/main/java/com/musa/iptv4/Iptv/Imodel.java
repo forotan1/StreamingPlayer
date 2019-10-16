@@ -1,6 +1,6 @@
 package com.musa.iptv4.Iptv;
 
-public class iModel {
+public class Imodel {
 
     private long id;
     private String iTitle;
@@ -8,10 +8,10 @@ public class iModel {
     private String iAbout;
     private String image;
 
-    public iModel() {
+    public Imodel() {
     }
 
-    public iModel(String iTitle, String iUrl, String iAbout, String image) {
+    public Imodel(String iTitle, String iUrl, String iAbout, String image) {
         this.iTitle = iTitle;
         this.iUrl = iUrl;
         this.iAbout = iAbout;

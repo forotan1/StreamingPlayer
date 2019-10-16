@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Tv Live Plus 3</string>
+    <string name="app_name">Tv Live</string>
     <string name="action_settings">Settings</string>
     <string name="action_add_favourite">Add to Favourites</string>
     <string name="action_play_next">Play </string>
     <string name="action_tv_guid"> Guid </string>
     <string name="backdrop_title">Live TV</string>
-    <string name="backdrop_subtitle">Watch Free Live TV</string>
+    <string name="backdrop_subtitle">Add a Media Link</string>
     <string name="af_tab">Afghan</string>
     <string name="iran_tab">iran</string>
     <string name="sport_tab">sport</string>
@@ -21,9 +21,11 @@
 
     <string name="dialog_cancel">Cancel</string>
     <string name="light_mode">Light Mode</string>
-
-
-
+    <string name="sugessted_links">Some Media sources</string>
+    <string name="enter_a_name">Enter a name</string>
+    <string name="paste_a_valid_stream">Paste a valid stream or media Link</string>
+    <string name="past_an_icon">Past an icon/image Link</string>
+    <string name="description">Description/memo</string>
 
 
 </resources>
