@@ -33,32 +33,25 @@ import androidx.cardview.widget.CardView;
 import java.util.Locale;
 
 public class AboutActivity extends AppCompatActivity   {
-    private static final int CHANGE_LANGUAGE_REQUEST_CODE = 1;
-
-    CircularImageView circularImageView;
     TextView changeLang;
-    private AlertDialog mUnitSettingDialog;
     protected Switch mySwitch;
     SharedPref sharedPref;
     ImageView shareApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        sharedPref = new SharedPref(this);
-        if (sharedPref.loadNightMode()== true) {
-            setTheme(R.style.LightAppTheme);
-        }
-        else setTheme(R.style.AppTheme);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        sharedPref = new SharedPref(this);
+        if (sharedPref.loadNightMode()) {
+            setTheme(R.style.LightAppTheme);
+        }
+        else setTheme(R.style.AppTheme);
         mySwitch = findViewById(R.id.my_switch);
-
         if (sharedPref.loadNightMode()==true) {
             mySwitch.setChecked(true);
         }
-
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -73,8 +66,6 @@ public class AboutActivity extends AppCompatActivity   {
             }
         });
 
-
-
         shareApp = findViewById(R.id.share_app);
         shareApp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +78,7 @@ public class AboutActivity extends AppCompatActivity   {
                 startActivity(Intent.createChooser(shaIntent, "share via"));
             }
         });
-        changeLang = findViewById(R.id.change_language);
+        changeLang = findViewById(R.id.change_lang);
         changeLang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
