@@ -1,5 +1,4 @@
 package com.musa.iptv4.Iptv;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -12,7 +11,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
+
 import com.musa.iptv4.R;
+
+
 public class UpdateDialog extends AppCompatDialogFragment {
 
     private EditText updateTitle;
@@ -116,7 +118,11 @@ public class UpdateDialog extends AppCompatDialogFragment {
     }
 
     private void goBackHome(){
-        startActivity(new Intent(getContext(), IpTv.class));
+        IpTv nextFrag = new IpTv();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_fragment_layout, nextFrag, "findThisFragment")
+                .addToBackStack(null)
+                .commit();
     }
 
 }

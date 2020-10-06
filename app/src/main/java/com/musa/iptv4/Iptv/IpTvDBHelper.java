@@ -60,15 +60,17 @@ public class IpTvDBHelper extends SQLiteOpenHelper {
     }
 
     /**Query records, give options to filter results**/
-    public List<Imodel> peopleList(String filter) {
+    public List<Imodel> peopleList() {
         String query;
-        if(filter.equals("")){
-            //regular query
-            query = "SELECT  * FROM " + TABLE_NAME;
-        }else{
-            //filter results by filter option provided
-            query = "SELECT  * FROM " + TABLE_NAME + " ORDER BY "+ filter;
-        }
+
+        query = "SELECT  * FROM " + TABLE_NAME;
+//        if(filter.equals("")){
+//            //regular query
+//            query = "SELECT  * FROM " + TABLE_NAME;
+//        }else{
+//            //filter results by filter option provided
+//            query = "SELECT  * FROM " + TABLE_NAME + " ORDER BY "+ filter;
+//        }
 
         List<Imodel> imodelLinkedList = new LinkedList<>();
         SQLiteDatabase db = this.getWritableDatabase();
@@ -121,7 +123,7 @@ public class IpTvDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         db.execSQL("DELETE FROM "+TABLE_NAME+" WHERE _id='"+id+"'");
-       // Toast.makeText(context, "Deleted successfully.", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(context, "Deleted successfully.", Toast.LENGTH_SHORT).show();
 
     }
 

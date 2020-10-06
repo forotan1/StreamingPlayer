@@ -1,72 +1,121 @@
 package com.musa.iptv4.About;
 
-import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CompoundButton;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.mikhaellopez.circularimageview.CircularImageView;
-import com.musa.iptv4.Iptv.IpTv;
-import com.musa.iptv4.LiveTv.LiveTvActivity;
 import com.musa.iptv4.R;
-import com.musa.iptv4.Utilities.BottomNavigationViewHelper;
+import com.musa.iptv4.Utilities.DarkModeHelper;
 import com.musa.iptv4.Utilities.SharedPref;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
 
-import java.util.Locale;
 
-public class AboutActivity extends AppCompatActivity   {
+public class AboutActivity extends Fragment {
     TextView changeLang;
     protected Switch mySwitch;
     SharedPref sharedPref;
     ImageView shareApp;
 
+    Button changeMode;
+    Context context;
+
+    private RadioGroup rg;
+    private RadioButton radioButton;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+    public View onCreateView (@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                              @Nullable Bundle savedInstanceState) {
+       View view = inflater.inflate(R.layout.activity_about, container, false);
+        sharedPref = new SharedPref(getContext());
 
-        sharedPref = new SharedPref(this);
-        if (sharedPref.loadNightMode()) {
-            setTheme(R.style.LightAppTheme);
-        }
-        else setTheme(R.style.AppTheme);
-        mySwitch = findViewById(R.id.my_switch);
-        if (sharedPref.loadNightMode()==true) {
-            mySwitch.setChecked(true);
-        }
-        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    sharedPref.setNightModeState(true);
-                    restartApp();
-                }
-                else {
-                    sharedPref.setNightModeState(false);
-                    restartApp();
-                }
-            }
-        });
+//        switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())){
+//            case "dark":
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//                break;
+//            case "light":
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//                break;
+//            default:
+//                if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+//                    getActivity().setContentView(R.layout.activity_main);
+//                } else {
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+//                }
+//
+//        }
+//        //context = getContext();
+//
+//        changeMode = view.findViewById(R.id.change_mode);
+//        changeMode.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                final Dialog dialog = new Dialog(getContext());
+//                dialog.setContentView(R.layout.custom_layout);
+//                dialog.setTitle("Choose The Mode");
+//
+//                rg = dialog.findViewById(R.id.radioGroupTheme);
+//                switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())) {
+//                    case "dark":
+//                        rg.check(R.id.radioButtonDark);
+//                        break;
+//                    case "light":
+//                        rg.check(R.id.radioButtonLight);
+//                        break;
+//                    default:
+//                        rg.check(R.id.radioButtonDefault);
+//                }
+//
+//                rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//                        switch (i) {
+//                            case R.id.radioButtonDark:
+//                                DarkModeHelper.getInstance().setPref("dark", getActivity().getBaseContext());
+//                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//                                dialog.dismiss();
+//                                break;
+//                            case R.id.radioButtonLight:
+//                                DarkModeHelper.getInstance().setPref("light",getActivity().getBaseContext());
+//                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//                                dialog.dismiss();
+//                                break;
+//                            default:
+//                                DarkModeHelper.getInstance().setPref("default", getActivity().getBaseContext());
+//
+//                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+//                                    getActivity().setContentView(R.layout.activity_about);
+//                                } else {
+//                                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+//                                }
+//                                dialog.dismiss();
+//                        }
+//                    }
+//                });
+//
+//
+//                dialog.show();
+//
+//
+//            }
+//        });
 
-        shareApp = findViewById(R.id.share_app);
+        shareApp = view.findViewById(R.id.share_app);
         shareApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,121 +127,84 @@ public class AboutActivity extends AppCompatActivity   {
                 startActivity(Intent.createChooser(shaIntent, "share via"));
             }
         });
-        changeLang = findViewById(R.id.change_lang);
-        changeLang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showLangChangeDialo();
+//        changeLang = view.findViewById(R.id.change_lang);
+//        changeLang.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showLangChangeDialo();
+//
+//            }
+//        });
+//
+//        loadLocale();
 
-            }
-        });
-
-
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView_Bar);
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-        Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem =menu.getItem(2);
-        menuItem.setChecked(true);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.about :
-                        break;
-
-                    case R.id.ip_tv:
-                        Intent ipIntent = new Intent(AboutActivity.this, IpTv.class);
-                        startActivity(ipIntent);
-                        break;
-
-                    case R.id.live_tv:
-                        Intent aboutIntent = new Intent(AboutActivity.this, LiveTvActivity.class);
-                        startActivity(aboutIntent);
-                        break;
-
-                }
-
-
-                return false;
-            }
-        });
-        loadLocale();
+        return view;
 
     }
 
-    private void restartApp() {
-        Intent i = new Intent(getApplicationContext(), AboutActivity.class);
-        startActivity(i);
-        finish();
-    }
 
 
-    private void showLangChangeDialo() {
-        final  String[] listItem ={"English", "Deutsch", "پارسی"};
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(AboutActivity.this);
-        mBuilder.setTitle("Chnage Language");
-        mBuilder.setSingleChoiceItems(listItem, -1, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                if (i == 0){
-                    changeLang("en");
-                    recreate();
-                }
-                if (i == 1){
-                    changeLang("de");
-                    recreate();
-                }
-                if (i == 2){
-                    changeLang("fa");
-                    recreate();
-                }
-
-                dialog.dismiss();
-            }
-        });
-        AlertDialog mdialog = mBuilder.create();
-        mdialog.show();
-    }
-
-    public void loadLocale(){
-        String langPref = "language";
-        SharedPreferences preferences = getSharedPreferences("com.musa.nightmode.PREFRENCES", Context.MODE_PRIVATE);
-        String language = preferences.getString(langPref,"");
-        Locale locale = new Locale(language);
-        Locale.setDefault(locale);
-        Configuration configuration = new Configuration();
-
-        configuration.locale = locale;
-        getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
-
-    }
-
-    private void changeLang(String lang) {
-        if (lang.equalsIgnoreCase(""))
-            return;
-
-        Locale locale = new Locale(lang);
-        savelocale(lang);
-        Locale.setDefault(locale);
-        Configuration configuration = new Configuration();
-
-        configuration.locale = locale;
-        getBaseContext().getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
-
-
-
-
-    }
-
-    public void savelocale (String lang){
-        String langPref = "language";
-        SharedPreferences prefs = getSharedPreferences("com.musa.nightmode.PREFRENCES", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(langPref, lang);
-        editor.apply();
-    }
+//    private void showLangChangeDialo() {
+//        final  String[] listItem ={"English", "Deutsch", "پارسی"};
+//        AlertDialog.Builder mBuilder = new AlertDialog.Builder(AboutActivity.this);
+//        mBuilder.setTitle("Chnage Language");
+//        mBuilder.setSingleChoiceItems(listItem, -1, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int i) {
+//                if (i == 0){
+//                    changeLang("en");
+//                    recreate();
+//                }
+//                if (i == 1){
+//                    changeLang("de");
+//                    recreate();
+//                }
+//                if (i == 2){
+//                    changeLang("fa");
+//                    recreate();
+//                }
+//
+//                dialog.dismiss();
+//            }
+//        });
+//        AlertDialog mdialog = mBuilder.create();
+//        mdialog.show();
+//    }
+//
+//    public void loadLocale(){
+//        String langPref = "language";
+//        SharedPreferences preferences = getSharedPreferences("com.musa.nightmode.PREFRENCES", Context.MODE_PRIVATE);
+//        String language = preferences.getString(langPref,"");
+//        Locale locale = new Locale(language);
+//        Locale.setDefault(locale);
+//        Configuration configuration = new Configuration();
+//
+//        configuration.locale = locale;
+//        getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
+//
+//    }
+//
+//    private void changeLang(String lang) {
+//        if (lang.equalsIgnoreCase(""))
+//            return;
+//
+//        Locale locale = new Locale(lang);
+//        savelocale(lang);
+//        Locale.setDefault(locale);
+//        Configuration configuration = new Configuration();
+//
+//        configuration.locale = locale;
+//        getBaseContext().getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
+//
+//    }
+//
+//    public void savelocale (String lang){
+//        String langPref = "language";
+//        SharedPreferences prefs = getSharedPreferences("com.musa.nightmode.PREFRENCES", Activity.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = prefs.edit();
+//        editor.putString(langPref, lang);
+//        editor.apply();
+//    }
 
 
 

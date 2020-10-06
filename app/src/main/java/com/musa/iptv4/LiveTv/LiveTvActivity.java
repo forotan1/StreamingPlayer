@@ -1,106 +1,68 @@
 package com.musa.iptv4.LiveTv;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.tabs.TabLayout;
-import com.musa.iptv4.About.AboutActivity;
-import com.musa.iptv4.Iptv.IpTv;
 import com.musa.iptv4.LiveTv.Afghanistan.AfghanTab;
 import com.musa.iptv4.LiveTv.Iran.IranTab;
 import com.musa.iptv4.LiveTv.Others.OthersTab;
 import com.musa.iptv4.LiveTv.Sport.SportTab;
 import com.musa.iptv4.R;
-import com.musa.iptv4.Utilities.BottomNavigationViewHelper;
 import com.musa.iptv4.Utilities.SectionsPageAdapter;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import java.util.Objects;
 
-public class LiveTvActivity extends AppCompatActivity {
+public class LiveTvActivity extends Fragment {
 
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
 
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+            Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.live_tv_activity, container, false);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mSectionsPageAdapter = new SectionsPageAdapter(getActivity().getSupportFragmentManager());
 
-        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
-
-        mViewPager = findViewById(R.id.live_tv_View_pager);
+        mViewPager = view.findViewById(R.id.live_tv_View_pager);
         setViewPager(mViewPager);
 
-        TabLayout tabLayout = findViewById(R.id.tabs);
+        TabLayout tabLayout = view.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
-        Objects.requireNonNull(tabLayout.getTabAt(0)).setIcon(R.drawable.ic_af);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_af);
         tabLayout.getTabAt(0).setText(getText(R.string.af_tab));
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_azadi);
-        tabLayout.getTabAt(1).setText(getText(R.string.af_tab));
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_android);
+        tabLayout.getTabAt(1).setText(getText(R.string.iran_tab));
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_sport);
         tabLayout.getTabAt(2).setText("Sport");
-        tabLayout.getTabAt(3).setIcon(R.drawable.ic_about);
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_more);
         tabLayout.getTabAt(3).setText("Others");
-
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavView_Bar);
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-        Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem =menu.getItem(0);
-        menuItem.setChecked(true);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.live_tv:
-                        break;
-
-                    case R.id.ip_tv:
-                        Intent ipIntent = new Intent(LiveTvActivity.this, IpTv.class);
-                        startActivity(ipIntent);
-                        break;
-
-                    case R.id.about:
-                        Intent aboutIntent = new Intent(LiveTvActivity.this, AboutActivity.class);
-                        startActivity(aboutIntent);
-                        break;
-
-                }
-
-
-                return false;
-            }
-        });
-
     }
 
     private void setViewPager(ViewPager viewPager){
 
-        SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
+        SectionsPageAdapter adapter = new SectionsPageAdapter(getChildFragmentManager());
         adapter.addFragment(new AfghanTab());
         adapter.addFragment(new IranTab());
         adapter.addFragment(new SportTab());
         adapter.addFragment(new OthersTab());
         viewPager.setAdapter(adapter);
 
-
     }
-
-
-
     public void onPause(){
         super.onPause();
-        overridePendingTransition(0,0);
+        getActivity().overridePendingTransition(0,0);
     }
-
 }

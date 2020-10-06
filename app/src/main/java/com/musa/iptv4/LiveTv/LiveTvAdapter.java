@@ -59,7 +59,6 @@ public class LiveTvAdapter extends RecyclerView.Adapter<LiveTvAdapter.MyViewHold
         }
     }
 
-
     public LiveTvAdapter(Context mContext, List<LiveTvModel> live_ModelList) {
         this.mContext = mContext;
         this.live_ModelList = live_ModelList;

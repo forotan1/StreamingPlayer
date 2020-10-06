@@ -127,14 +127,12 @@
                 />
 
 
-            <Switch
-                android:id="@+id/my_switch"
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:textColor="?attr/textcolor"
-
-                android:text="@string/light_mode"/>
+                android:text="Change Mode"
+                android:id="@+id/change_mode"
+                />
 
 
 
