@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimary">#050505</color>
     <color name="colorPrimaryDark">#FFC107</color>
-    <color name="colorAccent">#ec5e32</color>
+    <color name="colorAccent">#FF5722</color>
     <color name="colorWhite">#fff</color>
-    <color name="card_bg">#fff</color>
-    <color name="colorBlack">#fff</color>
-    <color name="mainBackground">#2196F3</color>
-    <color name="barColor">#fff</color>
+    <color name="card_bg">#111111</color>
+    <color name="colorBlack">#000000</color>
+    <color name="mainBackground">#050505</color>
+    <color name="barColor">#0e0e0e</color>
     <color name="buttonColor">#0e0e0e</color>
     <color name="BoldTextColor">#FF5722</color>
     <color name="textColor">#fff</color>
-    <color name="textBgColor">#fff</color>
+    <color name="textBgColor">#373737</color>
     <color name="dark_orange">#FF5722</color>
 
     <!--Card View -->
 
-    <color name="icon_bg">#FF9800</color>
+    <color name="icon_bg">#0C0C0C</color>
     <color name="icon_text_bg">#1a1a1a</color>
     <color name="transistor_gold">#FFE6BA64</color>
     <color name="transistor_grey_very_light">#FFEFEDEB</color>
@@ -26,8 +26,8 @@
     <!--Navigation Bar-->
 
     <color name="naviBar_bg">#887777</color>
-    <color name="tint_selected_bg">#ec5e32</color>
-    <color name="tint_unSelected_bg">#FFFFFF</color>
+    <color name="tint_selected_bg">#FF5722</color>
+    <color name="tint_unSelected_bg">#373737</color>
     <color name="tint_default_bg">#808080</color>
 
     <!--Items Color-->

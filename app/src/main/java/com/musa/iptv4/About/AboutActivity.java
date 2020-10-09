@@ -3,12 +3,17 @@ package com.musa.iptv4.About;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -22,14 +27,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import static com.musa.iptv4.R.drawable.abc_ic_voice_search_api_material;
+import static com.musa.iptv4.R.drawable.day_icon;
+import static com.musa.iptv4.R.drawable.night_icon;
+
 
 public class AboutActivity extends Fragment {
     TextView changeLang;
-    protected Switch mySwitch;
+    Switch mySwitch;
     SharedPref sharedPref;
     ImageView shareApp;
 
-    Button changeMode;
+
+    private static ImageButton changeMode;
     Context context;
 
     private RadioGroup rg;
@@ -39,82 +49,97 @@ public class AboutActivity extends Fragment {
     public View onCreateView (@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                               @Nullable Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.activity_about, container, false);
+
+
+        changeMode = view.findViewById(R.id.change_mode);
+
+
         sharedPref = new SharedPref(getContext());
 
-//        switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())){
-//            case "dark":
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//                break;
-//            case "light":
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//                break;
-//            default:
-//                if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-//                    getActivity().setContentView(R.layout.activity_main);
-//                } else {
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
-//                }
-//
-//        }
-//        //context = getContext();
-//
-//        changeMode = view.findViewById(R.id.change_mode);
-//        changeMode.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                final Dialog dialog = new Dialog(getContext());
-//                dialog.setContentView(R.layout.custom_layout);
-//                dialog.setTitle("Choose The Mode");
-//
-//                rg = dialog.findViewById(R.id.radioGroupTheme);
-//                switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())) {
-//                    case "dark":
-//                        rg.check(R.id.radioButtonDark);
-//                        break;
-//                    case "light":
-//                        rg.check(R.id.radioButtonLight);
-//                        break;
-//                    default:
-//                        rg.check(R.id.radioButtonDefault);
-//                }
-//
-//                rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//                    @Override
-//                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-//                        switch (i) {
-//                            case R.id.radioButtonDark:
-//                                DarkModeHelper.getInstance().setPref("dark", getActivity().getBaseContext());
-//                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//                                dialog.dismiss();
-//                                break;
-//                            case R.id.radioButtonLight:
-//                                DarkModeHelper.getInstance().setPref("light",getActivity().getBaseContext());
-//                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//                                dialog.dismiss();
-//                                break;
-//                            default:
-//                                DarkModeHelper.getInstance().setPref("default", getActivity().getBaseContext());
-//
-//                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-//                                    getActivity().setContentView(R.layout.activity_about);
-//                                } else {
-//                                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
-//                                }
-//                                dialog.dismiss();
-//                        }
-//                    }
-//                });
-//
-//
-//                dialog.show();
-//
-//
-//            }
-//        });
+        switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())){
+            case "dark":
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                changeMode.setBackground(getResources().getDrawable(night_icon));
 
+                break;
+            case "light":
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                changeMode.setBackground(getResources().getDrawable(day_icon));
+//                Intent intent2 = new Intent(getActivity(), AboutActivity.class);
+//                startActivity(intent2);
+                break;
+            default:
+                if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                    getActivity().setContentView(R.layout.activity_about);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+                }
+//                Intent intent3 = new Intent(getActivity(), AboutActivity.class);
+//                startActivity(intent3);
+
+        }
+        context = getContext();
+
+        changeMode = view.findViewById(R.id.change_mode);
+        changeMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.custom_layout);
+                dialog.setTitle("Choose the mode");
+
+                rg = dialog.findViewById(R.id.radioGroupTheme);
+                switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())) {
+                    case "dark":
+                        rg.check(R.id.radioButtonDark);
+
+                        break;
+                    case "light":
+                        rg.check(R.id.radioButtonLight);
+                        break;
+                    default:
+                        rg.check(R.id.radioButtonDefault);
+                }
+
+                rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                        switch (i) {
+                            case R.id.radioButtonDark:
+                                DarkModeHelper.getInstance().setPref("dark", getActivity().getBaseContext());
+                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//                                Intent intent1 = new Intent(getActivity(), AboutActivity.class);
+//                                startActivity(intent1);
+                                dialog.dismiss();
+                                break;
+                            case R.id.radioButtonLight:
+                                DarkModeHelper.getInstance().setPref("light",getActivity().getBaseContext());
+                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                                dialog.dismiss();
+                                break;
+                            default:
+                                DarkModeHelper.getInstance().setPref("default", getActivity().getBaseContext());
+
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                                    getActivity().setContentView(R.layout.activity_about);
+                                } else {
+                                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+                                }
+                                dialog.dismiss();
+                        }
+                    }
+                });
+
+
+                dialog.show();
+
+
+            }
+        });
+//
         shareApp = view.findViewById(R.id.share_app);
         shareApp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +162,8 @@ public class AboutActivity extends Fragment {
 //        });
 //
 //        loadLocale();
+
+
 
         return view;
 

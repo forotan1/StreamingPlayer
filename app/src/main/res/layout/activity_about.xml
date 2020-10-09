@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/backroundcolor"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/mainBackground"
     tools:context=".About.AboutActivity"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="360dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="300dp"
             android:orientation="vertical"
-            android:background="?attr/colorPrimary">
-
+            android:background="@color/card_bg">
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -34,43 +32,67 @@
                 android:textSize="20sp"
                 android:textColor="?attr/textcolor"
                 android:textStyle="bold"/>
-
-
         </LinearLayout>
-
         <androidx.cardview.widget.CardView
             android:id="@+id/settingAcity"
             android:layout_width="380dp"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="200dp"
-            card_view:cardBackgroundColor="?attr/card_bg">
-            <LinearLayout
+            android:layout_marginTop="250dp"
+            android:background="@color/dark_orange"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Contact and Suport"
-                    android:textStyle="bold"
-                    android:textColor="?attr/textcolor"
-                    android:textSize="15dp"
-
+                android:background="@drawable/card_item_1_background">
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/end_card_view"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     />
-
-                <ImageView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:src="@drawable/ic_share_black_24dp"
-                    android:layout_gravity="center"
-                    android:id="@+id/share_app"/>
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    tools:ignore="MissingConstraints">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact and Suport"
+                        android:textColor="@color/BoldTextColor"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/ic_share_black_24dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/share_app"
+                        android:background="@drawable/icon_background"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/ic_share_black_24dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/telegram"
+                        android:background="@drawable/icon_background"/>
+                </LinearLayout>
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.cardview.widget.CardView>
@@ -78,27 +100,133 @@
     </RelativeLayout>
     <androidx.cardview.widget.CardView
         android:layout_width="380dp"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        card_view:cardBackgroundColor="?attr/card_bg"
-
-        >
-        <LinearLayout
+        android:layout_marginTop="30dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Setting:"
-                android:textStyle="bold"
-                android:textColor="?attr/textcolor"
-                android:textSize="15dp"
-                android:layout_gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/card_item_2_background">
+            <View
+                android:layout_width="80dp"
+                android:layout_height="0dp"
+                android:background="@drawable/end_card_view"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 />
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Setup"
+                    android:textColor="@color/BoldTextColor"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_margin="15dp"
+                    android:gravity="center">
+
+
+                    <ImageButton
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="20dp"
+                        android:layout_gravity="center"
+                        android:id="@+id/change_mode"
+                        android:background="@drawable/icon_background"/>
+                    <TextView
+                        android:id="@+id/change_lang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="English"
+                        android:textStyle="bold"
+                        android:textColor="@color/BoldTextColor"
+                        android:layout_margin="20dp"
+                        />
+
+                </LinearLayout>
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="380dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/card_item_3_background">
+            <View
+                android:layout_width="80dp"
+                android:layout_height="0dp"
+                android:background="@drawable/end_card_view"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Help Developer"
+                    android:textColor="@color/BoldTextColor"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/ic_share_black_24dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/iban"
+                    android:background="@drawable/icon_background"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/ic_share_black_24dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/paypal"
+                    android:background="@drawable/icon_background"/>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -107,89 +235,9 @@
             android:layout_margin="15dp">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Language:"
-                android:textStyle="bold"
-                android:id="@+id/change_language"
-                android:gravity="left"
-                android:textColor="?attr/textcolor"
-                />
-            <TextView
-                android:id="@+id/change_lang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|center_horizontal"
-                android:text="English"
-                android:textStyle="bold"
-                android:textColor="?attr/textcolor"
-                />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Change Mode"
-                android:id="@+id/change_mode"
-                />
-
-
-
         </LinearLayout>
 
-
-
-
     </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="380dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        card_view:cardBackgroundColor="?attr/card_bg">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Donation"
-            android:textStyle="bold"
-            android:textColor="?attr/textcolor"
-            android:textSize="15dp"
-            android:layout_gravity="top|center"
-            />
-
-    </androidx.cardview.widget.CardView>
-
-
-
-
-
-    <!--NavigationBar-->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/bottomBar"
-        android:layout_gravity="bottom">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/bottomNavView_Bar"
-            android:background="?attr/naviBar_bg"
-            app:menu="@menu/bottom_navigation_menu"
-            style="@style/BottomNavigation"
-            app:labelVisibilityMode="labeled">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-    </RelativeLayout>
-
-
-
 
 
 </LinearLayout>

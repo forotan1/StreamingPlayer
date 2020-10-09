@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.musa.iptv4.About.AboutActivity;
 import com.musa.iptv4.Iptv.IpTv;
 import com.musa.iptv4.LiveTv.LiveTvActivity;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navi_bottom);
         bottomNavigationView.setOnNavigationItemSelectedListener(naviListener);
+        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED);
 
         getSupportFragmentManager()
                 .beginTransaction().replace(R.id.main_fragment_layout,

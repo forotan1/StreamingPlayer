@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/iptv_root"
-    android:background="@color/dark_bg">
+    android:background="@color/mainBackground">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:scrollbars="vertical"
-            android:background="@color/dark_bg"
+            android:background="@color/mainBackground"
             android:numColumns="auto_fit"/>
 
 

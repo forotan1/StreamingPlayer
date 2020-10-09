@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:color="@color/dark_orange"/>
-    <item android:state_checked="false" android:color="?attr/colorOnSurface"/>
+    <item android:state_checked="true" android:color="@color/tint_selected_bg"/>
+    <item android:state_checked="false" android:color="@color/tint_unSelected_bg"/>
 </selector>

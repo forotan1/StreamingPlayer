@@ -21,4 +21,11 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="light_mode">Hill </string>
     <string name="sugessted_links">mehr medien</string>
+    <string name="enter_a_name">Enter a name</string>
+    <string name="paste_a_valid_stream">Paste a valid stream or media Link</string>
+    <string name="past_an_icon">Past an icon/image Link</string>
+    <string name="description">Description/memo</string>
+    <string name="dark">Dark</string>
+    <string name="light">Light</string>
+    <string name="system_default">Default</string>
 </resources>
