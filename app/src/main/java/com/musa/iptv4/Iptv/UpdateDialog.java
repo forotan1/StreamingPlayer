@@ -1,21 +1,18 @@
 package com.musa.iptv4.Iptv;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
+
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDialogFragment;
-
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.musa.iptv4.R;
 
-
-public class UpdateDialog extends AppCompatDialogFragment {
+public class UpdateDialog extends BottomSheetDialogFragment {
 
     private EditText updateTitle;
     private EditText updateUrl;
@@ -24,14 +21,13 @@ public class UpdateDialog extends AppCompatDialogFragment {
     private IpTvDBHelper dbHelper;
     private long receivedPersonId;
 
+    Button btCancel, btnUpdate;
+
     @NonNull
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.add_layout_dialog, null);
-
+        View view = inflater.inflate(R.layout.update_layout_dialog, null);
 
         //init
         updateTitle = view.findViewById(R.id.ip_tv_title);
@@ -39,6 +35,8 @@ public class UpdateDialog extends AppCompatDialogFragment {
         updateIcon= view.findViewById(R.id.ip_tv_icon);
         updateAbout = view.findViewById(R.id.ip_tv_about);
 
+        btnUpdate = view.findViewById(R.id.bts_ok);
+        btCancel = view.findViewById(R.id.bts_cancel);
 
         dbHelper = new IpTvDBHelper(getContext());
         try {
@@ -48,7 +46,6 @@ public class UpdateDialog extends AppCompatDialogFragment {
             e.printStackTrace();
         }
 
-        /***populate user data before update***/
         Imodel queriedImodel = dbHelper.getPerson(receivedPersonId);
         //set field to this user data
         updateTitle.setText(queriedImodel.getiTitle());
@@ -56,34 +53,26 @@ public class UpdateDialog extends AppCompatDialogFragment {
         updateAbout.setText(queriedImodel.getiAbout());
         updateIcon.setText(queriedImodel.getImage());
 
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updatePerson();
+            }
+        });
+        btCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
 
-        builder.setView(view)
-                .setTitle("Update Stream")
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                })
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        updatePerson();
-
-
-                    }
-                });
-        return builder.create();
-
-
-
+        return view;
     }
     private void updatePerson(){
         String iTitle = updateTitle.getText().toString().trim();
         String iAbout = updateAbout.getText().toString().trim();
         String iUrl = updateUrl.getText().toString().trim();
         String image = updateIcon.getText().toString().trim();
-
 
         if(iTitle.isEmpty()){
             //error iTitle is empty
@@ -114,11 +103,12 @@ public class UpdateDialog extends AppCompatDialogFragment {
         //finally redirect back home
         // NOTE you can implement an sqlite callback then redirect on success delete
         goBackHome();
+        dismiss();
 
     }
 
     private void goBackHome(){
-        IpTv nextFrag = new IpTv();
+        IpTv nextFrag= new IpTv();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_fragment_layout, nextFrag, "findThisFragment")
                 .addToBackStack(null)
@@ -126,3 +116,4 @@ public class UpdateDialog extends AppCompatDialogFragment {
     }
 
 }
+

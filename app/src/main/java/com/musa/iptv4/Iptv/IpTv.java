@@ -106,7 +106,7 @@ public class IpTv extends Fragment {
 
     public void openDialog() {
 
-        RecordDialog recordDialog = new RecordDialog();
+        RecordDialog recordDialog = new RecordDialog(getActivity(), R.style.BottomSheetDialogTheme);
         recordDialog.show(getActivity().getSupportFragmentManager(), "record dialog");
     }
 

@@ -1,61 +1,74 @@
 package com.musa.iptv4.Iptv;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatDialogFragment;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.musa.iptv4.R;
 
-public class RecordDialog extends AppCompatDialogFragment {
+public class RecordDialog extends BottomSheetDialogFragment {
+
+
+    Button btHelp, btOk, btCancel;
+    private Activity activity;
+    int theme;
 
     private EditText mNameEditText;
     private EditText mAgeEditText;
     private EditText mOccupationEditText;
     private EditText mImageEditText;
+
     private IpTvDBHelper dbHelper;
+
+    public RecordDialog(FragmentActivity activity, int bottomSheetDialogTheme) {
+        this.activity = activity;
+        this.theme = bottomSheetDialogTheme;
+
+    }
+
+
+    @Nullable
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.add_layout_dialog, null);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        builder.setView(view);
-        builder.setTitle("Add a new Stream");
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        View v = inflater.inflate(R.layout.add_layout_dialog, container, false);
 
-            }
-        });
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        btOk = v.findViewById(R.id.bts_ok);
+        btCancel = v.findViewById(R.id.bts_cancel);
+        btHelp = v.findViewById(R.id.bts_hlep);
+
+        mNameEditText = v.findViewById(R.id.ip_tv_title);
+        mAgeEditText = v.findViewById(R.id.ip_tv_url);
+        mOccupationEditText = v.findViewById(R.id.ip_tv_about);
+        mImageEditText = v.findViewById(R.id.ip_tv_icon);
+
+        btOk.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(View view) {
                 savePerson();
 
-
             }
         });
-        builder.setNeutralButton("Help", new DialogInterface.OnClickListener() {
+        btCancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getContext(), "opened", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                dismiss();
+
             }
         });
+        btHelp.setOnClickListener(view -> Toast.makeText(getActivity(), "help pressed",Toast.LENGTH_LONG).show());
+
+        return v;
 
 
-        mNameEditText = view.findViewById(R.id.ip_tv_title);
-        mAgeEditText = view.findViewById(R.id.ip_tv_url);
-        mOccupationEditText = view.findViewById(R.id.ip_tv_about);
-        mImageEditText = view.findViewById(R.id.ip_tv_icon);
-
-
-        return builder.create();
 
     }
 

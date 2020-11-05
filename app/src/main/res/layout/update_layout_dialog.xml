@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter stream details"
+        android:text="Update stream details"
         android:textStyle="bold"
         android:textSize="30sp"
         android:id="@+id/text_title"
@@ -61,14 +61,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:padding="10dp">
-        <Button
-            android:id="@+id/bts_hlep"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:text="Help"
-            android:layout_margin="5dp"
 
-            />
         <Button
             android:id="@+id/bts_cancel"
             android:layout_width="100dp"
@@ -83,7 +76,7 @@
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
-            android:text="Ok" />
+            android:text="Update" />
 
 
     </LinearLayout>
