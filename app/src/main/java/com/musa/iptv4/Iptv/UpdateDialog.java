@@ -68,17 +68,23 @@ public class UpdateDialog extends BottomSheetDialogFragment {
 
         return view;
     }
+    @Override
+    public int getTheme() {
+        return R.style.BottomSheetDialogTheme;
+    }
     private void updatePerson(){
         String iTitle = updateTitle.getText().toString().trim();
         String iAbout = updateAbout.getText().toString().trim();
         String iUrl = updateUrl.getText().toString().trim();
         String image = updateIcon.getText().toString().trim();
 
-        if(iTitle.isEmpty()){
-            //error iTitle is empty
-            Toast.makeText(getContext(), "You must enter a iTitle", Toast.LENGTH_SHORT).show();
-        }
+        if (iTitle.trim().equals("") || iTitle.isEmpty()) {
+            iTitle = null;
+            updateTitle.requestFocus();
+            //error name is empty
+            Toast.makeText(getContext(), "You must enter a name", Toast.LENGTH_SHORT).show();
 
+        }
         if(iUrl.isEmpty()){
             //error iTitle is empty
             Toast.makeText(getContext(), "You must enter an age", Toast.LENGTH_SHORT).show();
