@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.musa.iptv4.LiveTv.Afghanistan.AfghanTab;
@@ -24,6 +25,7 @@ public class LiveTvActivity extends Fragment {
 
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
+   // private ViewPager2 mViewPager
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
@@ -41,13 +43,10 @@ public class LiveTvActivity extends Fragment {
 
         TabLayout tabLayout = view.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_af);
         tabLayout.getTabAt(0).setText(getText(R.string.af_tab));
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_azadi);
         tabLayout.getTabAt(1).setText(getText(R.string.iran_tab));
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_sport);
         tabLayout.getTabAt(2).setText("Sport");
-        tabLayout.getTabAt(3).setIcon(R.drawable.ic_more);
+        //tabLayout.getTabAt(3).setIcon(R.drawable.ic_more);
         tabLayout.getTabAt(3).setText("Others");
     }
 

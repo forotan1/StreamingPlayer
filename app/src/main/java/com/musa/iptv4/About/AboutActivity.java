@@ -1,11 +1,15 @@
 package com.musa.iptv4.About;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,7 +29,10 @@ import com.musa.iptv4.Utilities.SharedPref;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+
+import java.util.Locale;
 
 import static com.musa.iptv4.R.drawable.abc_ic_voice_search_api_material;
 import static com.musa.iptv4.R.drawable.day_icon;
@@ -35,7 +42,7 @@ import static com.musa.iptv4.R.drawable.night_icon;
 public class AboutActivity extends Fragment {
     TextView changeLang;
     Switch mySwitch;
-    SharedPref sharedPref;
+    //SharedPref sharedPref;
     ImageView shareApp;
 
 
@@ -49,13 +56,7 @@ public class AboutActivity extends Fragment {
     public View onCreateView (@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                               @Nullable Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.activity_about, container, false);
-
-
         changeMode = view.findViewById(R.id.change_mode);
-
-
-        sharedPref = new SharedPref(getContext());
-
         switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())){
             case "dark":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -65,22 +66,18 @@ public class AboutActivity extends Fragment {
             case "light":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 changeMode.setBackground(getResources().getDrawable(day_icon));
-//                Intent intent2 = new Intent(getActivity(), AboutActivity.class);
-//                startActivity(intent2);
                 break;
             default:
                 if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                    getActivity().setContentView(R.layout.activity_about);
+                    changeMode.setBackground(getResources().getDrawable(day_icon));
+                   // getActivity().setContentView(R.layout.activity_about);
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
                 }
-//                Intent intent3 = new Intent(getActivity(), AboutActivity.class);
-//                startActivity(intent3);
 
         }
         context = getContext();
-
         changeMode = view.findViewById(R.id.change_mode);
         changeMode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +136,6 @@ public class AboutActivity extends Fragment {
 
             }
         });
-//
         shareApp = view.findViewById(R.id.share_app);
         shareApp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,24 +148,18 @@ public class AboutActivity extends Fragment {
                 startActivity(Intent.createChooser(shaIntent, "share via"));
             }
         });
+
 //        changeLang = view.findViewById(R.id.change_lang);
 //        changeLang.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                showLangChangeDialo();
-//
 //            }
 //        });
 //
 //        loadLocale();
-
-
-
         return view;
-
     }
-
-
 
 //    private void showLangChangeDialo() {
 //        final  String[] listItem ={"English", "Deutsch", "پارسی"};
@@ -232,11 +222,5 @@ public class AboutActivity extends Fragment {
 //        editor.putString(langPref, lang);
 //        editor.apply();
 //    }
-
-
-
-
-
-
 
 }

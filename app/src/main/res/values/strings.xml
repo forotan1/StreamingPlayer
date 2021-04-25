@@ -29,6 +29,9 @@
     <string name="dark">Night</string>
     <string name="light">Day</string>
     <string name="system_default">Default</string>
+    <string name="enter_stream_details">Enter stream details</string>
+    <string name="help">Help</string>
+    <string name="cancel_dialog">Cancel</string>
 
 
 </resources>

@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
+
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.musa.iptv4.R;
 
@@ -54,25 +56,26 @@ public class RecordDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 savePerson();
-
+                dismiss();
             }
         });
         btCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dismiss();
-
             }
         });
-        btHelp.setOnClickListener(view -> Toast.makeText(getActivity(), "help pressed",Toast.LENGTH_LONG).show());
+        btHelp.setOnClickListener(view -> Toast.makeText(getActivity(), "help pressed", Toast.LENGTH_LONG).show());
 
         return v;
-
-
-
     }
 
-    private void savePerson(){
+    @Override
+    public int getTheme() {
+        return R.style.BottomSheetDialogTheme;
+    }
+
+    private void savePerson() {
         String name = mNameEditText.getText().toString().trim();
         String age = mAgeEditText.getText().toString().trim();
         String occupation = mOccupationEditText.getText().toString().trim();
@@ -80,23 +83,25 @@ public class RecordDialog extends BottomSheetDialogFragment {
 
         dbHelper = new IpTvDBHelper(getContext());
 
-        if(name.isEmpty()){
+        if (name.trim().equals("") || name.isEmpty()) {
+            name = null;
+            mNameEditText.requestFocus();
             //error name is empty
             Toast.makeText(getContext(), "You must enter a name", Toast.LENGTH_SHORT).show();
+
+        } else {
         }
-
-
-        if(age.isEmpty()){
+        if (age.isEmpty()) {
             //error name is empty
             Toast.makeText(getContext(), "You must enter an age", Toast.LENGTH_SHORT).show();
         }
 
-        if(occupation.isEmpty()){
+        if (occupation.isEmpty()) {
             //error name is empty
             Toast.makeText(getContext(), "You must enter an occupation", Toast.LENGTH_SHORT).show();
         }
 
-        if(image.isEmpty()){
+        if (image.isEmpty()) {
             //error name is empty
             Toast.makeText(getContext(), "You must enter an image link", Toast.LENGTH_SHORT).show();
         }
@@ -111,8 +116,8 @@ public class RecordDialog extends BottomSheetDialogFragment {
 
     }
 
-    private void goBackHome(){
-        IpTv nextFrag= new IpTv();
+    private void goBackHome() {
+        IpTv nextFrag = new IpTv();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_fragment_layout, nextFrag, "findThisFragment")
                 .addToBackStack(null)

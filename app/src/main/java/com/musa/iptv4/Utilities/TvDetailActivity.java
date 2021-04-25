@@ -1,20 +1,29 @@
 package com.musa.iptv4.Utilities;
 
+import android.app.PictureInPictureParams;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
+import android.util.Rational;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.jarvanmo.exoplayerview.media.ExoMediaSource;
 import com.jarvanmo.exoplayerview.media.SimpleMediaSource;
 import com.jarvanmo.exoplayerview.media.SimpleQuality;
+import com.jarvanmo.exoplayerview.ui.ExoVideoPlaybackControlView;
 import com.jarvanmo.exoplayerview.ui.ExoVideoView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.musa.iptv4.R;
@@ -33,18 +42,22 @@ import static com.musa.iptv4.LiveTv.Afghanistan.AfghanTab.EXTRA_TITLE;
 public class TvDetailActivity extends AppCompatActivity {
 
     private ExoVideoView videoView;
+    ImageButton pipView;
 
     CircularImageView circularImageView;
+    //private PictureInPictureParams.Builder picturePictureParams;
+    private static final String TAG = "PIP_TAG";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tv_detail);
 
-            Intent intent = getIntent();
-            String tvTitle= intent.getStringExtra(EXTRA_TITLE);
-            String tvIcon = intent.getStringExtra(EXTRA_ICON);
-            String aboutTv = intent.getStringExtra(EXTRA_ABOUT_TV);
-            String liveUrl = intent.getStringExtra(EXTRA_LIVE_URL);
+        Intent intent = getIntent();
+        String tvTitle= intent.getStringExtra(EXTRA_TITLE);
+        String tvIcon = intent.getStringExtra(EXTRA_ICON);
+        String aboutTv = intent.getStringExtra(EXTRA_ABOUT_TV);
+        String liveUrl = intent.getStringExtra(EXTRA_LIVE_URL);
 
 
         TextView titleView = findViewById(R.id.detailA_tv_title);
@@ -58,6 +71,10 @@ public class TvDetailActivity extends AppCompatActivity {
         Glide.with(this).load(tvIcon).into(circularImageView);
 
         videoView = findViewById(R.id.ExovideoView);
+            pipView = findViewById(R.id.pip_view);
+
+
+
 
 
         videoView.setBackListener((view, isPortrait) -> {
@@ -66,9 +83,6 @@ public class TvDetailActivity extends AppCompatActivity {
             }
             return false;
         });
-
-
-
         videoView.setOrientationListener(orientation -> {
             if (orientation == SENSOR_PORTRAIT) {
                 changeToPortrait();
@@ -76,7 +90,7 @@ public class TvDetailActivity extends AppCompatActivity {
                 changeToLandscape();
             }
         });
-
+            videoView.changeWidgetVisibility(R.id.exo_player_controller_back, View.INVISIBLE);
 
 
         //String url = getIntent().getStringExtra("key_url");
@@ -105,10 +119,10 @@ public class TvDetailActivity extends AppCompatActivity {
         mediaSource.setQualities(qualities);
 
 
-
         videoView.play(mediaSource);
 
     }
+    //}
 
 
     private void changeToPortrait() {
@@ -132,6 +146,51 @@ public class TvDetailActivity extends AppCompatActivity {
     }
 
 
+
+
+//    private void pictureToPictureMode() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            Log.d(TAG, "support PIP");
+//            try {
+//
+//
+//                Rational aspectRatio = new Rational(videoView.getWidth(), videoView.getHeight());
+//                picturePictureParams.setAspectRatio(aspectRatio).build();
+//                enterPictureInPictureMode(picturePictureParams.build());
+//            } catch (IllegalStateException e) {
+//
+//            }
+//        } else {
+//            Log.d(TAG, "unsupport PIP");
+//        }
+//
+//    }
+//
+//    @Override
+//    protected void onUserLeaveHint() {
+//        super.onUserLeaveHint();
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            if (!isInPictureInPictureMode()) {
+//                Log.d(TAG, "onUserLeaveHint: was not in PIP");
+//            } else {
+//                Log.d(TAG, "onUserLeaveHint: already in pip");
+//            }
+//        }
+//    }
+//
+//    @Override
+//    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode, Configuration newConfig) {
+//        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig);
+//        if (!isInPictureInPictureMode) {
+//            Log.d(TAG, "onPictureInPictureModeChanged: Enterd PIP");
+//            pipView.setVisibility(View.VISIBLE);
+//            getApplication().startActivity(new Intent(this, getClass())
+//                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+//        } else {
+//            Log.d(TAG, "onPictureInPictureModeChanged: exit PIP");
+//            pipView.setVisibility(View.GONE);
+//        }
+//    }
 
 
     @Override

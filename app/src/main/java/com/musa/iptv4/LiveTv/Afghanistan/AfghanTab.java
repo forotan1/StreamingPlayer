@@ -72,22 +72,13 @@ public class AfghanTab extends Fragment implements LiveTvAdapter.onItemClickList
         databaseReference = myfdatabase.getReference("Afghan");
 
         tabRecyclerView = view.findViewById(R.id.tab_tv_recycler_view);
-
-
-
         liveTvModelList = new ArrayList<>();
 
         RecyclerView.LayoutManager tLayoutManager = new GridLayoutManager(getActivity(), getSpanCount());
         tabRecyclerView.setLayoutManager(tLayoutManager);
-
-
-
         retrievingData();
 
         return view;
-
-
-
     }
 
     private void retrievingData() {
@@ -117,14 +108,7 @@ public class AfghanTab extends Fragment implements LiveTvAdapter.onItemClickList
                         detailIntent.putExtra(EXTRA_ABOUT_TV, clickItem.getAboutTv());
                         detailIntent.putExtra(EXTRA_LIVE_URL, clickItem.getLiveUrl());
                         startActivity(detailIntent);
-
-
-
-
                 });
-
-
-
                 aAdapter.notifyDataSetChanged();
             }
 
@@ -136,9 +120,6 @@ public class AfghanTab extends Fragment implements LiveTvAdapter.onItemClickList
             }
         });
     }
-
-
-
     private int getSpanCount() {
         DisplayMetrics metrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -154,6 +135,3 @@ public class AfghanTab extends Fragment implements LiveTvAdapter.onItemClickList
         return (int) (spanSize / spanLim);
     }
 }
-
-
-

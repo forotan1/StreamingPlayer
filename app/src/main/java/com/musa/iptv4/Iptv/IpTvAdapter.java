@@ -1,6 +1,7 @@
 package com.musa.iptv4.Iptv;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +23,6 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 public class IpTvAdapter extends RecyclerView.Adapter<IpTvAdapter.ViewHolder> {
     private List<Imodel> mPeopleList;
@@ -65,6 +65,7 @@ public class IpTvAdapter extends RecyclerView.Adapter<IpTvAdapter.ViewHolder> {
                 inflater.inflate(R.layout.ip_tv_card, parent, false);
         return new ViewHolder(v);
     }
+    @SuppressLint("RestrictedApi")
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
@@ -77,7 +78,7 @@ public class IpTvAdapter extends RecyclerView.Adapter<IpTvAdapter.ViewHolder> {
             PopupMenu popup = new PopupMenu(mContext, holder.popUp);
             MenuInflater inflater = popup.getMenuInflater();
             inflater.inflate(R.menu.menu_album, popup.getMenu());
-            MenuPopupHelper menuPopupHelper =new MenuPopupHelper(mContext,menuBuilder);
+            @SuppressLint("RestrictedApi") MenuPopupHelper menuPopupHelper =new MenuPopupHelper(mContext,menuBuilder);
             menuPopupHelper.setForceShowIcon(true);
             popup.show();
             popup.setOnMenuItemClickListener(item -> {

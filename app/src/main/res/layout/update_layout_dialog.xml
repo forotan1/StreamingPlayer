@@ -22,39 +22,48 @@
         android:background="@color/colorWhite"/>
 
     <EditText
+        android:id="@+id/ip_tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ip_tv_title"
-        android:hint="@string/enter_a_name"
-        tools:ignore="Autofill"
         android:layout_below="@id/text_title"
-        android:paddingBottom="16dp"/>
+        android:hint="@string/enter_a_name"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        android:paddingBottom="16dp"
+        android:singleLine="true"
+        android:maxLength="10"
+         />
 
     <EditText
         android:id="@+id/ip_tv_url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/paste_a_valid_stream"
         android:layout_below="@+id/ip_tv_title"
+        android:hint="@string/paste_a_valid_stream"
+        android:inputType="textWebEmailAddress"
         android:paddingBottom="16dp"
-        />
+        android:singleLine="true" />
+
     <EditText
         android:id="@+id/ip_tv_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/past_an_icon"
         android:layout_below="@+id/ip_tv_url"
-        android:paddingBottom="16dp"/>
+        android:hint="@string/past_an_icon"
+        android:inputType="textWebEmailAddress"
+        android:paddingBottom="16dp"
+        android:singleLine="true" />
 
 
     <EditText
         android:id="@+id/ip_tv_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textUri"
-        android:hint="@string/description"
         android:layout_below="@id/ip_tv_icon"
-        android:paddingBottom="16dp"/>
+        android:hint="@string/description"
+        android:inputType="text"
+        android:paddingBottom="16dp"
+        android:maxLength="100"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -5,8 +5,8 @@
     <color name="colorPrimaryDark">#FFC107</color>
     <color name="colorAccent">#ec5e32</color>
     <color name="colorWhite">#fff</color>
-    <color name="card_bg">#fff</color>
-    <color name="colorBlack">#fff</color>
+    <color name="card_bg">#2B4E6A</color>
+    <color name="colorBlack">#000000</color>
     <color name="mainBackground">#2196F3</color>
     <color name="barColor">#fff</color>
     <color name="buttonColor">#0e0e0e</color>
@@ -14,6 +14,8 @@
     <color name="textColor">#fff</color>
     <color name="textBgColor">#fff</color>
     <color name="dark_orange">#FF5722</color>
+    <color name="transparent">#00000000</color>
+
 
     <!--Card View -->
 
@@ -25,10 +27,12 @@
 
     <!--Navigation Bar-->
 
-    <color name="naviBar_bg">#887777</color>
+    <color name="naviBar_background">#efefef</color>
     <color name="tint_selected_bg">#ec5e32</color>
-    <color name="tint_unSelected_bg">#FFFFFF</color>
+    <color name="tint_unSelected_bg">#808080</color>
     <color name="tint_default_bg">#808080</color>
+    <color name="itemTextColor">#ec5e32</color>
+
 
     <!--Items Color-->
     <color name="colorItem1Start">#FEBD18</color>
@@ -37,8 +41,8 @@
     <color name="colorItem2Start">#4D79FF</color>
     <color name="colorItem2End">#0039E6</color>
 
-    <color name="colorItem3Start">#993399</color>
-    <color name="colorItem3End">#602060</color>
+    <color name="colorItem3Start">#570DF3</color>
+    <color name="colorItem3End">#0A0223</color>
 
     <color name="colorItem4Start">#00B33C</color>
     <color name="colorItem4End">#006622</color>

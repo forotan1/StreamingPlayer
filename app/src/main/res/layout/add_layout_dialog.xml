@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter stream details"
+        android:text="@string/enter_stream_details"
         android:textStyle="bold"
         android:textSize="30sp"
         android:id="@+id/text_title"
@@ -22,39 +22,47 @@
         android:background="@color/colorWhite"/>
 
     <EditText
+        android:id="@+id/ip_tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ip_tv_title"
         android:hint="@string/enter_a_name"
-        tools:ignore="Autofill"
-        android:layout_below="@id/text_title"
-        android:paddingBottom="16dp"/>
+        android:inputType="textPersonName"
+        android:paddingBottom="16dp"
+        android:singleLine="true"
+        android:maxLength="10"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/ip_tv_url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/paste_a_valid_stream"
-        android:layout_below="@+id/ip_tv_title"
+        android:inputType="textWebEmailAddress"
         android:paddingBottom="16dp"
-        />
+        android:singleLine="true"
+        android:importantForAutofill="no"
+        tools:ignore="TextFields" />
+
     <EditText
         android:id="@+id/ip_tv_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/past_an_icon"
-        android:layout_below="@+id/ip_tv_url"
-        android:paddingBottom="16dp"/>
+        android:inputType="text"
+        android:paddingBottom="16dp"
+        android:singleLine="true"
+        android:importantForAutofill="no" />
 
 
     <EditText
         android:id="@+id/ip_tv_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textUri"
         android:hint="@string/description"
-        android:layout_below="@id/ip_tv_icon"
-        android:paddingBottom="16dp"/>
+        android:inputType="text"
+        android:paddingBottom="16dp"
+        android:maxLength="100"
+        android:importantForAutofill="no" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,7 +73,7 @@
             android:id="@+id/bts_hlep"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="Help"
+            android:text="@string/help"
             android:layout_margin="5dp"
 
             />
@@ -73,7 +81,7 @@
             android:id="@+id/bts_cancel"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="Cancel"
+            android:text="@string/cancel_dialog"
             android:layout_margin="5dp"
 
             />

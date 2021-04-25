@@ -103,18 +103,12 @@ public class IpTvDBHelper extends SQLiteOpenHelper {
         Imodel receivedImodel = new Imodel();
         if(cursor.getCount() > 0) {
             cursor.moveToFirst();
-
             receivedImodel.setiTitle(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_TITLE)));
             receivedImodel.setiUrl(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_URL)));
             receivedImodel.setiAbout(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_ABOUT)));
             receivedImodel.setImage(cursor.getString(cursor.getColumnIndex(COLUMN_MODEL_ICON)));
         }
-
-
-
         return receivedImodel;
-
-
     }
 
 

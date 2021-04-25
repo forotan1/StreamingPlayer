@@ -1,7 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     >
+
     <item
         android:id="@+id/action_update"
         android:orderInCategory="100"
@@ -14,7 +13,7 @@
         android:icon="@drawable/ic_about"/>
     <item
         android:id="@+id/action_play"
-        android:orderInCategory="101"
+        android:orderInCategory="102"
         android:title="@string/play_item"
         android:icon="@drawable/ic_about"/>
 </menu>
