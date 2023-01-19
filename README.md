@@ -1,6 +1,16 @@
-# this is my first Android project it mean it has many bugs 
-i am working on this project just for learning purpose 
-#Feature and detail of the project
-online Streaming player based with google exoPlayer library it mean you can play almost all audio and video format with this player.
-recyclerView and cardView layout
-firebase  for fetching IPTV  links from server which provide by me and those links which I past in server all r free IPTV links which are available in internet and used SQLite database actually modified this project https://github.com/RonnyKibet1/Android-SQLite-and-Recyclerview where user can save any link in local memory of device on their own choice.
+<h1> Hey there! I'm Musa 👋 </h1>
+this is my first Android project, it means it has many bugs 
+I am working on this project just for learning purpose 
+<h3> Features and detail </h3>
+
+- online Streaming player based with google exoPlayer library which is able to play almost all audio and video code.
+- It contains recyclerView and cardView layout.
+- firebase  Database server for fetching media links
+- SQLite database where user can store links of media on device local memory its a fork of this project https://github.com/RonnyKibet1/Android-SQLite-and-Recyclerview
+
+<h3> Features which will be added in future updates </h3>
+
+- PIP ( picture in picture) in and out of the App
+- Intro or welcome screen
+-  localization within App
+-  Dark and light mode
