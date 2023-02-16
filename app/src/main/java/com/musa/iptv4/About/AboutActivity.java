@@ -98,6 +98,7 @@ public class AboutActivity extends Fragment {
                         break;
                     default:
                         rg.check(R.id.radioButtonDefault);
+
                 }
 
                 rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
