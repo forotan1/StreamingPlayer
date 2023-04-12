@@ -7,10 +7,12 @@ I am working on this project just for learning purpose
 - It contains recyclerView and cardView layout.
 - firebase  Database server for fetching media links
 - SQLite database where user can store links of media on device local memory its a fork of this project https://github.com/RonnyKibet1/Android-SQLite-and-Recyclerview
+-  Dark and light mode
+-  localization within App ( User can change the language of App )
 
 <h3> Features which will be added in future updates </h3>
 
 - PIP ( picture in picture) in and out of the App
 - Intro or welcome screen
--  localization within App
--  Dark and light mode
+
+
