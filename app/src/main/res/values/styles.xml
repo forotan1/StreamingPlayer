@@ -15,8 +15,7 @@
     </style>
 
 
-    <!-- Styleable Toast. -->
-    <style name="mytoast">
+    <!-- Styleable Toast. -->  <style name="mytoast">
         <item name="stTextBold">true</item>
         <item name="stTextColor">#fff</item>
 

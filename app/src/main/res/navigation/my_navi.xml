@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navi"
+    app:startDestination="@id/liveFragment">
+
+    <fragment
+        android:id="@+id/liveFragment"
+        android:name="com.musa.iptv4.LiveTv.LiveFragment"
+        android:label="fragment_live"
+        tools:layout="@layout/fragment_live" />
+    <fragment
+        android:id="@+id/iptvFragment"
+        android:name="com.musa.iptv4.Iptv.IptvFragment"
+        android:label="fragment_iptv"
+        tools:layout="@layout/fragment_iptv" />
+    <fragment
+        android:id="@+id/extraFragment"
+        android:name="com.musa.iptv4.About.ExtraFragment"
+        android:label="fragment_extra"
+        tools:layout="@layout/fragment_extra" />
+</navigation>

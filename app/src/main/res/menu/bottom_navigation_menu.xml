@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       >
         <item
-            android:id="@+id/live_tv"
+            android:id="@+id/liveFragment"
             android:icon="@drawable/ic_live_tv"
             android:title="@string/live_tv"
             />
         <item
-            android:id="@+id/ip_tv"
+            android:id="@+id/iptvFragment"
             android:icon="@drawable/ic_ip_tv"
             android:title="@string/ip_tv"
             />
         <item
-            android:id="@+id/about"
+            android:id="@+id/extraFragment"
             android:icon="@drawable/ic_about"
             android:title="@string/about"
             />

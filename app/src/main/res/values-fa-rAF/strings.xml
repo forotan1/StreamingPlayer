@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">شبکه</string>
     <string name="action_settings">تنظیمات</string>
@@ -26,7 +25,16 @@
     <string name="paste_a_valid_stream">Paste a valid stream or media Link</string>
     <string name="past_an_icon">Past an icon/image Link</string>
     <string name="description">Description/memo</string>
-    <string name="dark">Dark</string>
-    <string name="light">Light</string>
+    <string name="dark">شب</string>
+    <string name="light">روز</string>
     <string name="system_default">Default</string>
+    <string name="english">انگیلسی</string>
+    <string name="persian">فارسی</string>
+    <string name="deutsch">آلمانی</string>
+    <string name="enter_stream_details">Enter stream details</string>
+    <string name="help">Help</string>
+    <string name="cancel_dialog">Cancel</string>
+    <string name="set_your_device_language">Set your device language</string>
+    <string name="contact_and_support">تماس به بخش پشتبانی</string>
+    <string name="dev_support">حمایت از سازنده</string>
 </resources>

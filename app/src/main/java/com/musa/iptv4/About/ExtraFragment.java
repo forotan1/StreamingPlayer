@@ -1,62 +1,50 @@
 package com.musa.iptv4.About;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
-import android.widget.TextView;
+
 import com.musa.iptv4.R;
 import com.musa.iptv4.Utilities.DarkModeHelper;
-import com.musa.iptv4.Utilities.SharedPref;
+import com.musa.iptv4.Utilities.LocaleHelper;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-import java.util.Locale;
-
-import static com.musa.iptv4.R.drawable.abc_ic_voice_search_api_material;
 import static com.musa.iptv4.R.drawable.day_icon;
 import static com.musa.iptv4.R.drawable.night_icon;
 
 
-public class AboutActivity extends Fragment {
-    TextView changeLang;
-    Switch mySwitch;
-    //SharedPref sharedPref;
+public class ExtraFragment extends Fragment {
+    Button changeLang;
     ImageView shareApp;
+    private Context mContext;
+    private ImageButton changeMode;
+    private RadioGroup themeGroup, languageRadioGroup;
 
-
-    private static ImageButton changeMode;
-    Context context;
-
-    private RadioGroup rg;
-    private RadioButton radioButton;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mContext = context;
+    }
 
     @Override
     public View onCreateView (@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                               @Nullable Bundle savedInstanceState) {
-       View view = inflater.inflate(R.layout.activity_about, container, false);
+        View view = inflater.inflate(R.layout.fragment_extra, container, false);
         changeMode = view.findViewById(R.id.change_mode);
+
         switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())){
             case "dark":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -71,45 +59,39 @@ public class AboutActivity extends Fragment {
                 if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
                     changeMode.setBackground(getResources().getDrawable(day_icon));
-                   // getActivity().setContentView(R.layout.activity_about);
+                    // getActivity().setContentView(R.layout.activity_about);
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
                 }
 
         }
-        context = getContext();
-        changeMode = view.findViewById(R.id.change_mode);
+
+
         changeMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.custom_layout);
-                dialog.setTitle("Choose the mode");
-
-                rg = dialog.findViewById(R.id.radioGroupTheme);
+                final Dialog dialog = new Dialog(mContext);
+                dialog.setContentView(R.layout.change_theme_layout);
+                themeGroup = dialog.findViewById(R.id.radioGroupTheme);
                 switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())) {
                     case "dark":
-                        rg.check(R.id.radioButtonDark);
-
+                        themeGroup.check(R.id.radioButtonDark);
                         break;
                     case "light":
-                        rg.check(R.id.radioButtonLight);
+                        themeGroup.check(R.id.radioButtonLight);
                         break;
                     default:
-                        rg.check(R.id.radioButtonDefault);
-
+                        themeGroup.check(R.id.radioButtonDefault);
                 }
 
-                rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                themeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup radioGroup, int i) {
                         switch (i) {
                             case R.id.radioButtonDark:
                                 DarkModeHelper.getInstance().setPref("dark", getActivity().getBaseContext());
                                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//                                Intent intent1 = new Intent(getActivity(), AboutActivity.class);
-//                                startActivity(intent1);
                                 dialog.dismiss();
                                 break;
                             case R.id.radioButtonLight:
@@ -122,11 +104,12 @@ public class AboutActivity extends Fragment {
 
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                                    getActivity().setContentView(R.layout.activity_about);
+                                    getActivity().setContentView(R.layout.fragment_extra);
                                 } else {
                                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
                                 }
                                 dialog.dismiss();
+
                         }
                     }
                 });
@@ -150,78 +133,64 @@ public class AboutActivity extends Fragment {
             }
         });
 
-//        changeLang = view.findViewById(R.id.change_lang);
-//        changeLang.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showLangChangeDialo();
-//            }
-//        });
-//
-//        loadLocale();
+
+        changeLang = view.findViewById(R.id.change_lang);
+        changeLang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeLanguage();
+
+            }
+        });
+
         return view;
+
     }
 
-//    private void showLangChangeDialo() {
-//        final  String[] listItem ={"English", "Deutsch", "پارسی"};
-//        AlertDialog.Builder mBuilder = new AlertDialog.Builder(AboutActivity.this);
-//        mBuilder.setTitle("Chnage Language");
-//        mBuilder.setSingleChoiceItems(listItem, -1, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int i) {
-//                if (i == 0){
-//                    changeLang("en");
-//                    recreate();
-//                }
-//                if (i == 1){
-//                    changeLang("de");
-//                    recreate();
-//                }
-//                if (i == 2){
-//                    changeLang("fa");
-//                    recreate();
-//                }
-//
-//                dialog.dismiss();
-//            }
-//        });
-//        AlertDialog mdialog = mBuilder.create();
-//        mdialog.show();
-//    }
-//
-//    public void loadLocale(){
-//        String langPref = "language";
-//        SharedPreferences preferences = getSharedPreferences("com.musa.nightmode.PREFRENCES", Context.MODE_PRIVATE);
-//        String language = preferences.getString(langPref,"");
-//        Locale locale = new Locale(language);
-//        Locale.setDefault(locale);
-//        Configuration configuration = new Configuration();
-//
-//        configuration.locale = locale;
-//        getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
-//
-//    }
-//
-//    private void changeLang(String lang) {
-//        if (lang.equalsIgnoreCase(""))
-//            return;
-//
-//        Locale locale = new Locale(lang);
-//        savelocale(lang);
-//        Locale.setDefault(locale);
-//        Configuration configuration = new Configuration();
-//
-//        configuration.locale = locale;
-//        getBaseContext().getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
-//
-//    }
-//
-//    public void savelocale (String lang){
-//        String langPref = "language";
-//        SharedPreferences prefs = getSharedPreferences("com.musa.nightmode.PREFRENCES", Activity.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = prefs.edit();
-//        editor.putString(langPref, lang);
-//        editor.apply();
-//    }
+    private void changeLanguage(){
+
+        final Dialog langDialog = new Dialog(mContext);
+        langDialog.setContentView(R.layout.lang_custom_layout);
+        languageRadioGroup = langDialog.findViewById(R.id.radioGroupLang);
+        String currentLanguageCode = LocaleHelper.getLanguage(getActivity());
+        switch (currentLanguageCode) {
+
+            case "en":
+                languageRadioGroup.check(R.id.radioButtonEnglish);
+                break;
+            case "fa":
+                languageRadioGroup.check(R.id.radioButtonPersian);
+                break;
+            case "de":
+                languageRadioGroup.check(R.id.radioButtonDeutsch);
+                break;
+        }
+        languageRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                switch (i) {
+                    case R.id.radioButtonEnglish:
+                        LocaleHelper.setLocale(mContext,"en");
+                        langDialog.dismiss();
+                        getActivity().recreate();
+                        break;
+                    case R.id.radioButtonPersian:
+                        LocaleHelper.setLocale(mContext,"fa");
+                        langDialog.dismiss();
+                        getActivity().recreate();
+                        break;
+                    case R.id.radioButtonDeutsch:
+                        LocaleHelper.setLocale(mContext,"de");
+                        langDialog.dismiss();
+                        getActivity().recreate();
+                        break;
+                }
+
+            }
+        });
+        langDialog.show();
+    }
+
 
 }

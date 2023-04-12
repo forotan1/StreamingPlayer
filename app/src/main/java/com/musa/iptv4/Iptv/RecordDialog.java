@@ -117,9 +117,9 @@ public class RecordDialog extends BottomSheetDialogFragment {
     }
 
     private void goBackHome() {
-        IpTv nextFrag = new IpTv();
+        IptvFragment nextFrag = new IptvFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_fragment_layout, nextFrag, "findThisFragment")
+                .replace(R.id.fragment, nextFrag, "findThisFragment")
                 .addToBackStack(null)
                 .commit();
     }

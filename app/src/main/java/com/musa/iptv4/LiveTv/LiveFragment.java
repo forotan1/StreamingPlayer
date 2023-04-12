@@ -1,15 +1,15 @@
 package com.musa.iptv4.LiveTv;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
 import com.musa.iptv4.LiveTv.Afghanistan.AfghanTab;
@@ -19,19 +19,21 @@ import com.musa.iptv4.LiveTv.Sport.SportTab;
 import com.musa.iptv4.R;
 import com.musa.iptv4.Utilities.SectionsPageAdapter;
 
-import java.util.Objects;
 
-public class LiveTvActivity extends Fragment {
-
+public class LiveFragment extends Fragment {
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
-   // private ViewPager2 mViewPager
 
+
+    public LiveFragment() {
+        // Required empty public constructor
+    }
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.live_tv_activity, container, false);
     }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -64,4 +66,6 @@ public class LiveTvActivity extends Fragment {
         super.onPause();
         getActivity().overridePendingTransition(0,0);
     }
+
+
 }
