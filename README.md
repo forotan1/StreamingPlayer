@@ -6,7 +6,7 @@ I am working on this project just for learning purpose
 - online Streaming player based with google exoPlayer library which is able to play almost all audio and video code.
 - It contains recyclerView and cardView layout.
 - firebase  Database server for fetching media links
-- SQLite database where user can store links of media on device local memory its a fork of this project https://github.com/RonnyKibet1/Android-SQLite-and-Recyclerview
+- SQLite database where user can store links of media on device local memory.
 -  Dark and light mode
 -  localization within App ( User can change the language of App )
 
