@@ -14,5 +14,6 @@ I am working on this project just for learning purpose
 
 - PIP ( picture in picture) in and out of the App
 - Intro or welcome screen
+- Better UI/UX
 
 
