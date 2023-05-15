@@ -10,6 +10,7 @@
             android:id="@+id/iptvFragment"
             android:icon="@drawable/ic_ip_tv"
             android:title="@string/ip_tv"
+
             />
         <item
             android:id="@+id/extraFragment"

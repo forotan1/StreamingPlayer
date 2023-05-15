@@ -2,7 +2,10 @@ package com.musa.iptv4;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +16,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.musa.iptv4.Utilities.LocaleHelper;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,9 +32,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.navi_bottom);
         NavController navController = Navigation.findNavController(this, R.id.fragment);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+
 
 
         sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE);
@@ -56,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(LocaleHelper.onAttach(base));
     }
-
-
 
 
 }

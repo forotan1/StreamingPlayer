@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/iptv_root"
-    android:background="@color/mainBackground">
+    android:background="@color/mainBackground"
+    android:layoutDirection="locale">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -34,17 +35,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_gravity="bottom|end"
+            android:layout_gravity="top|center"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="27dp"
+            android:layout_marginStart="10dp"
             android:src="@drawable/ic_baseline_add_circle_24"
             app:backgroundTint="@color/dark_orange"
-            app:fabSize="normal"
-
-            app:layout_anchorGravity="bottom|right|end" />
+            app:fabSize="normal" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

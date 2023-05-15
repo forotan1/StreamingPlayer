@@ -31,7 +31,7 @@ public class LiveFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.live_tv_activity, container, false);
+        return inflater.inflate(R.layout.fragment_live, container, false);
     }
 
 

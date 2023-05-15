@@ -14,6 +14,9 @@
     <color name="textColor">#fff</color>
     <color name="textBgColor">#373737</color>
     <color name="dark_orange">#FF5722</color>
+    <color name="setting_item_bg">#484884</color>
+    <color name="Gray_text_color">#808080</color>
+    <color name="text_lighter">#C6C3C3</color>
 
     <!--Card View -->
 

@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-
-    tools:showIn="@layout/tabs_layout">
+    tools:showIn="@layout/tabs_layout"
+    android:layoutDirection="locale">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tab_tv_recycler_view"

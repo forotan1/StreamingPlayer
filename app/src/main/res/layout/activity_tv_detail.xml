@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".Utilities.TvDetailActivity">
+    tools:context=".Utilities.TvDetailActivity"
+    android:layoutDirection="locale">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="350dp"

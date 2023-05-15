@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/tools"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    app:ignore="NamespaceTypo">
+    app:ignore="NamespaceTypo"
+    android:layoutDirection="locale">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -1,36 +1,36 @@
 package com.musa.iptv4.About;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.RadioGroup;
-
+import android.widget.TextView;
 import com.musa.iptv4.R;
 import com.musa.iptv4.Utilities.DarkModeHelper;
 import com.musa.iptv4.Utilities.LocaleHelper;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import com.musa.iptv4.BuildConfig;
 
-import static com.musa.iptv4.R.drawable.day_icon;
-import static com.musa.iptv4.R.drawable.night_icon;
 
 
 public class ExtraFragment extends Fragment {
-    Button changeLang;
-    ImageView shareApp;
+    ConstraintLayout changeLang, changeMode, donate, share_app, suggest;
+    TextView theme_name, language_name, user_name, version_text;
     private Context mContext;
-    private ImageButton changeMode;
     private RadioGroup themeGroup, languageRadioGroup;
 
     @Override
@@ -43,22 +43,65 @@ public class ExtraFragment extends Fragment {
     public View onCreateView (@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                               @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_extra, container, false);
-        changeMode = view.findViewById(R.id.change_mode);
+        changeMode = view.findViewById(R.id.theme_layout);
+        theme_name = view.findViewById(R.id.theme_name_text);
+        language_name = view.findViewById(R.id.lang_name_text);
+        version_text = view.findViewById(R.id.version_text);
+        int versionCode = BuildConfig.VERSION_CODE;
+        String versionName = BuildConfig.VERSION_NAME;
+        String versionNameText = (getString(R.string.app_version));
+
+        version_text.setText(versionNameText +" : " + versionName);
+
+
+        SharedPreferences saveName = getActivity().getSharedPreferences("MyPrefs",Context.MODE_PRIVATE);
+        user_name = view.findViewById(R.id.user_name_text);
+        String savedText = saveName.getString("name", "");
+        user_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                EditText editText = new EditText(getActivity().getApplicationContext());
+                editText.setInputType(InputType.TYPE_CLASS_TEXT);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle(getString(R.string.write_name));
+                builder.setView(editText);
+                builder.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String name = editText.getText().toString();
+                        user_name.setText(name);
+                        SharedPreferences.Editor editor = saveName.edit();
+                        editor.putString("name", name);
+                        editor.apply();
+                    }
+                });
+                builder.setNegativeButton(getString(R.string.cancel), null);
+                builder.show();
+
+            }
+        });
+
+
+
 
         switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())){
             case "dark":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                changeMode.setBackground(getResources().getDrawable(night_icon));
+                // changeMode.setBackground(getResources().getDrawable(night_icon));
+                //theme_name.setText(getText(R.string.dark));
 
                 break;
             case "light":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                changeMode.setBackground(getResources().getDrawable(day_icon));
+                // changeMode.setBackground(getResources().getDrawable(day_icon));
+                //theme_name.setText(getText(R.string.light));
                 break;
             default:
                 if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                    changeMode.setBackground(getResources().getDrawable(day_icon));
+                    // changeMode.setBackground(getResources().getDrawable(day_icon));
+                    // theme_name.setText(getText(R.string.system_default));
                     // getActivity().setContentView(R.layout.activity_about);
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
@@ -120,8 +163,8 @@ public class ExtraFragment extends Fragment {
 
             }
         });
-        shareApp = view.findViewById(R.id.share_app);
-        shareApp.setOnClickListener(new View.OnClickListener() {
+        share_app = view.findViewById(R.id.share_layout);
+        share_app.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent shaIntent = new Intent(Intent.ACTION_SEND);
@@ -134,7 +177,7 @@ public class ExtraFragment extends Fragment {
         });
 
 
-        changeLang = view.findViewById(R.id.change_lang);
+        changeLang = view.findViewById(R.id.language_layout);
         changeLang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,12 +200,15 @@ public class ExtraFragment extends Fragment {
 
             case "en":
                 languageRadioGroup.check(R.id.radioButtonEnglish);
+               // language_name.setText(getText(R.string.english));
                 break;
             case "fa":
                 languageRadioGroup.check(R.id.radioButtonPersian);
+               // language_name.setText(getText(R.string.persian));
                 break;
             case "de":
                 languageRadioGroup.check(R.id.radioButtonDeutsch);
+               // language_name.setText(getText(R.string.german));
                 break;
         }
         languageRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -191,6 +237,7 @@ public class ExtraFragment extends Fragment {
         });
         langDialog.show();
     }
+
 
 
 }

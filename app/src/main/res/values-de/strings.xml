@@ -18,25 +18,38 @@
     <string name="delete_item">Delete</string>
     <string name="play_item">Play</string>
 
-    <string name="dialog_cancel">Cancel</string>
+    <string name="cancel">Cancel</string>
     <string name="light_mode">Light Mode</string>
     <string name="sugessted_links">Some Media sources</string>
     <string name="enter_a_name">Enter a name</string>
     <string name="paste_a_valid_stream">Paste a valid stream or media Link</string>
     <string name="past_an_icon">Past an icon/image Link</string>
     <string name="description">Description/memo</string>
-    <string name="dark">Night</string>
-    <string name="light">Day</string>
+    <string name="dark">Hell</string>
+    <string name="light">Dunkel</string>
     <string name="system_default">Default</string>
     <string name="english">English</string>
     <string name="persian">Persian</string>
-    <string name="deutsch">German</string>
+    <string name="german">German</string>
     <string name="enter_stream_details">Enter stream details</string>
     <string name="help">Help</string>
-    <string name="cancel_dialog">Cancel</string>
     <string name="set_your_device_language">Set your device language</string>
     <string name="contact_and_support">Contact and Support</string>
     <string name="dev_support">Unterschutzen</string>
+    <string name="settings_text">Settings</string>
+    <string name="user_name_text">Deine Name</string>
+    <string name="appearance_text">Erscheinungsbild</string>
+    <string name="language_setting_text">Deutsch</string>
+    <string name="lang_text">Sprache</string>
+    <string name="appearance_name_text">Nacht</string>
+    <string name="appearance_arrow"><![CDATA[>]]></string>
+    <string name="donate_text">Spende</string>
+    <string name="share_text">Share</string>
+    <string name="suggest_text">Mehr App von Dev</string>
+    <string name="app_version">App version</string>
+    <string name="write_name">Schreib deine Name</string>
+    <string name="follow_us_online">Folgen uns online</string>
+    <string name="ok">Okay</string>
 
 
 </resources>
