@@ -1,37 +1,59 @@
 package com.musa.iptv4.About;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.musa.iptv4.R;
 import com.musa.iptv4.Utilities.DarkModeHelper;
 import com.musa.iptv4.Utilities.LocaleHelper;
+
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import com.musa.iptv4.BuildConfig;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 
 public class ExtraFragment extends Fragment {
+    private static final String PREFS_NAME = "MyPrefs";
+    private static final String PROFILE_IMAGE_PATH = "profile_image_path";
+    private static final int PICK_IMAGE_REQUEST = 1;
+    String imgDecodableString;
     ConstraintLayout changeLang, changeMode, donate, share_app, suggest;
     TextView theme_name, language_name, user_name, version_text;
     private Context mContext;
     private RadioGroup themeGroup, languageRadioGroup;
+    SharedPreferences saveName, saveProfilePic;
+    ImageView profilePic, faceBookImage;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -50,13 +72,30 @@ public class ExtraFragment extends Fragment {
         int versionCode = BuildConfig.VERSION_CODE;
         String versionName = BuildConfig.VERSION_NAME;
         String versionNameText = (getString(R.string.app_version));
-
         version_text.setText(versionNameText +" : " + versionName);
 
 
-        SharedPreferences saveName = getActivity().getSharedPreferences("MyPrefs",Context.MODE_PRIVATE);
+        profilePic = view.findViewById(R.id.profile_pic);
+        saveProfilePic = requireActivity().getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE);
+
+        String imagePath = saveProfilePic.getString(PROFILE_IMAGE_PATH, null );
+        if (imagePath != null){
+            Bitmap profileImage = BitmapFactory.decodeFile(imagePath);
+            profilePic.setImageBitmap(profileImage);
+        }
+
+        profilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadImageFromGallery();
+
+            }
+        });
+
+
+        saveName = getActivity().getSharedPreferences("User_name",Context.MODE_PRIVATE);
         user_name = view.findViewById(R.id.user_name_text);
-        String savedText = saveName.getString("name", "");
+
         user_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,11 +108,16 @@ public class ExtraFragment extends Fragment {
                 builder.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String name = editText.getText().toString();
-                        user_name.setText(name);
-                        SharedPreferences.Editor editor = saveName.edit();
-                        editor.putString("name", name);
-                        editor.apply();
+                        String name = editText.getText().toString().trim();
+                        if (!name.isEmpty()){
+                            SharedPreferences.Editor editor = saveName.edit();
+                            editor.putString("name", name);
+                            editor.apply();
+
+
+                        }
+
+
                     }
                 });
                 builder.setNegativeButton(getString(R.string.cancel), null);
@@ -83,8 +127,8 @@ public class ExtraFragment extends Fragment {
         });
 
 
-
-
+        String savedText = saveName.getString("name", getString(R.string.write_again));
+        user_name.setText(savedText);
         switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())){
             case "dark":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -236,6 +280,64 @@ public class ExtraFragment extends Fragment {
             }
         });
         langDialog.show();
+    }
+
+    public void loadImageFromGallery(){
+        try {
+            mContext = getActivity();
+
+            Intent intentGallery = new Intent(Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intentGallery, PICK_IMAGE_REQUEST);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+            Uri selectedImageUri = data.getData();
+            if (selectedImageUri != null) {
+                try {
+                    Bitmap selectedImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImageUri);
+                    profilePic.setImageBitmap(selectedImage);
+
+                    // Save the new profile image path
+                    String imagePath = saveProfileImage(selectedImage);
+                    saveProfileImagePath(imagePath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+    }
+
+    private String saveProfileImage(Bitmap image) {
+        String imagePath = getActivity().getExternalFilesDir(null) + File.separator + "profile_image.png";
+        try {
+            FileOutputStream fos = new FileOutputStream(imagePath);
+            image.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return imagePath;
+    }
+
+    private void saveProfileImagePath(String imagePath) {
+        SharedPreferences.Editor editor = saveProfilePic.edit();
+        editor.putString(PROFILE_IMAGE_PATH, imagePath);
+        editor.apply();
     }
 
 

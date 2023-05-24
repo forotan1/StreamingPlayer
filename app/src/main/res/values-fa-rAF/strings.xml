@@ -42,11 +42,12 @@
     <string name="lang_text">زبان</string>
     <string name="appearance_name_text">شب</string>
     <string name="appearance_arrow"><![CDATA[>]]></string>
-    <string name="donate_text">"کمک مالی "</string>
+    <string name="open_source">نرم افزار های سورز باز</string>
     <string name="share_text">به اشتراک گذاری</string>
     <string name="suggest_text">به اشتراک گذاری</string>
     <string name="app_version">نسخه برنامه</string>
     <string name="write_name">نام خد را وارد کنید</string>
-    <string name="follow_us_online">ما را دنبال کنید</string>
+    <string name="follow_us_online">جهت کمک مالی یا نماس ما را دنبال کنید</string>
     <string name="ok">تايید</string>
+    <string name="write_again">اسم کاربر وجود ندارد</string>
 </resources>

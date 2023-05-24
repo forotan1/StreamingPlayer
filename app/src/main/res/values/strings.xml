@@ -43,13 +43,14 @@
     <string name="lang_text">Language</string>
     <string name="appearance_name_text">Dark</string>
     <string name="appearance_arrow"><![CDATA[>]]></string>
-    <string name="donate_text">Donate</string>
+    <string name="open_source">"Open source "</string>
     <string name="share_text">Share</string>
     <string name="suggest_text">More APP from this Developer</string>
     <string name="app_version">App version</string>
     <string name="write_name">Enter your name</string>
-    <string name="follow_us_online">Follow us online</string>
+    <string name="follow_us_online">For donatin or contatct Follow us</string>
     <string name="ok">Ok</string>
+    <string name="write_again">No User Name</string>
 
 
 </resources>
