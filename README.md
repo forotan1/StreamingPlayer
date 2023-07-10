@@ -17,5 +17,5 @@ I am working on this project just for learning purpose
 - Better UI/UX
 - 
 ![Screenshoots]( width="250")
-<img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174732.png" width="250"> | <img src="https://mk0jobadderjftub56m0.kinstacdn.com/wp-content/uploads/stackoverflow.com-300.jpg" width="250">
+<img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174732.png" width="250"> | <img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174810.png" width="250">
 
