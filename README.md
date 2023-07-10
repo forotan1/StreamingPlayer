@@ -17,5 +17,5 @@ I am working on this project just for learning purpose
 - Better UI/UX
 - 
 ![Screenshoots](https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174732.png width="250")
-src="https://media.wired.com/photos/5926db217034dc5f91becd6b/master/w_582,c_limit/so-logo-s.jpg" width="250"> | <img src="https://mk0jobadderjftub56m0.kinstacdn.com/wp-content/uploads/stackoverflow.com-300.jpg" width="250">
+<img src="https://media.wired.com/photos/5926db217034dc5f91becd6b/master/w_582,c_limit/so-logo-s.jpg" width="250"> | <img src="https://mk0jobadderjftub56m0.kinstacdn.com/wp-content/uploads/stackoverflow.com-300.jpg" width="250">
 
