@@ -16,5 +16,5 @@ I am working on this project just for learning purpose
 - Intro or welcome screen
 - Better UI/UX
 - 
-![Screenshoots](https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174732.png)
+![Screenshoots](https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174732.png width="250")
 
