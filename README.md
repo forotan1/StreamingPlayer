@@ -16,7 +16,6 @@ I am working on this project just for learning purpose
 - Intro or welcome screen
 - Better UI/UX
 - 
-![Screenshoots]( width="250")
 <img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174732.png" width="250"> | <img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174810.png" width="250">
 <img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174949.png" width="250"> | <img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174849.png" width="250">
 
