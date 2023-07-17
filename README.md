@@ -15,6 +15,7 @@ I am working on this project just for learning purpose
 - PIP ( picture in picture) in and out of the App
 - Intro or welcome screen
 - Better UI/UX
+
 <h3> Screenshoots</h3>
   
 <img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174732.png" width="250"> | <img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174810.png" width="250">
@@ -23,4 +24,6 @@ I am working on this project just for learning purpose
 
 
 [APK debug file ] ( https://github.com/forotan1/LiveTVStreamer/blob/master/app-debug.apk )
+
+* [Atomic:](https://github.com/MazinIsmail/JavaLearnings/tree/master/src/main/concurrency/com/atomic/learnings)
 
