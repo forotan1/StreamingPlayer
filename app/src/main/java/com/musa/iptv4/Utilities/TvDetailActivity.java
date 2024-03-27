@@ -3,7 +3,6 @@ package com.musa.iptv4.Utilities;
 import android.annotation.SuppressLint;
 import android.app.PictureInPictureParams;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Build;
@@ -20,9 +19,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.bumptech.glide.Glide;
-import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.jarvanmo.exoplayerview.media.ExoMediaSource;
 import com.jarvanmo.exoplayerview.media.SimpleMediaSource;
 import com.jarvanmo.exoplayerview.media.SimpleQuality;
@@ -71,21 +68,18 @@ public class TvDetailActivity extends AppCompatActivity {
 
         videoView = findViewById(R.id.ExovideoView);
         pipView = findViewById(R.id.pip_view_new);
-        pipView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    Display display = getWindowManager().getDefaultDisplay();
-                    Point size = new Point();
-                    display.getSize(size);
-                    int width = 300;
-                    int height = 350;
+        pipView.setOnClickListener(view -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Display display = getWindowManager().getDefaultDisplay();
+                Point size = new Point();
+                display.getSize(size);
+                int width = 300;
+                int height = 350;
 
-                    Rational aspectRatio = new Rational(width, height);
-                    PictureInPictureParams.Builder mPictureInPictureParams = new PictureInPictureParams.Builder();
-                    mPictureInPictureParams.setAspectRatio(aspectRatio).build();
-                    enterPictureInPictureMode(mPictureInPictureParams.build());
-                }
+                Rational aspectRatio = new Rational(width, height);
+                PictureInPictureParams.Builder mPictureInPictureParams = new PictureInPictureParams.Builder();
+                mPictureInPictureParams.setAspectRatio(aspectRatio).build();
+                enterPictureInPictureMode(mPictureInPictureParams.build());
             }
         });
 
@@ -105,9 +99,6 @@ public class TvDetailActivity extends AppCompatActivity {
         });
             videoView.changeWidgetVisibility(R.id.exo_player_controller_back, View.INVISIBLE);
 
-
-        //String url = getIntent().getStringExtra("key_url");
-
         final SimpleMediaSource mediaSource = new SimpleMediaSource(liveUrl);
 
         mediaSource.setDisplayName(getString(R.string.video_playing));
@@ -117,14 +108,14 @@ public class TvDetailActivity extends AppCompatActivity {
 
         for (int i = 0; i < 6; i++) {
             SpannableString spannableString = new SpannableString(getString(R.string.quality) + i);
+            ForegroundColorSpan colorSpan;
             if (i % 2 == 0) {
-                ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.YELLOW);
-                spannableString.setSpan(colorSpan, 0, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                colorSpan = new ForegroundColorSpan(Color.YELLOW);
 
             } else {
-                ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.RED);
-                spannableString.setSpan(colorSpan, 0, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                colorSpan = new ForegroundColorSpan(Color.RED);
             }
+            spannableString.setSpan(colorSpan, 0, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 
             quality = new SimpleQuality(spannableString, mediaSource.uri());
             qualities.add(quality);
