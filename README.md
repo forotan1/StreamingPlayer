@@ -16,6 +16,8 @@ I am working on this project just for learning purpose
 
 - Intro or welcome screen
 - Better UI/UX
+- Android TV Suport with new UI for Android TV
+- Moving from Java to Kotlin special Jetcompose
 
 <h3> Screenshoots</h3>
   
