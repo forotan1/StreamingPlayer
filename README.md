@@ -21,7 +21,7 @@ I am working on this project just for learning purpose
   
 <img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20240327-214144.png" width="250"> | <img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174810.png" width="250">
 <img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174949.png" width="250"> | <img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-174849.png" width="250">
-<img src="https://github.com/forotan1/LiveTVStreamer/blob/master/Screenshot_20230710-175004.png" width="250">
+<img src="https://github.com/forotan1/StreamingPlayer/blob/master/Screenshot_20240327-214405.png" width="250">
 
  [APK debug file ]( https://github.com/forotan1/LiveTVStreamer/blob/master/app-debug.apk)
 
