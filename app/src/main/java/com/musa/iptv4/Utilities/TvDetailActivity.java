@@ -1,36 +1,35 @@
 package com.musa.iptv4.Utilities;
 
+import android.annotation.SuppressLint;
 import android.app.PictureInPictureParams;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.util.Rational;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.jarvanmo.exoplayerview.media.ExoMediaSource;
 import com.jarvanmo.exoplayerview.media.SimpleMediaSource;
 import com.jarvanmo.exoplayerview.media.SimpleQuality;
-import com.jarvanmo.exoplayerview.ui.ExoVideoPlaybackControlView;
 import com.jarvanmo.exoplayerview.ui.ExoVideoView;
-import com.mikhaellopez.circularimageview.CircularImageView;
 import com.musa.iptv4.R;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import androidx.appcompat.app.AppCompatActivity;
 import static com.jarvanmo.exoplayerview.orientation.OnOrientationChangedListener.SENSOR_LANDSCAPE;
 import static com.jarvanmo.exoplayerview.orientation.OnOrientationChangedListener.SENSOR_PORTRAIT;
@@ -44,10 +43,10 @@ public class TvDetailActivity extends AppCompatActivity {
     private ExoVideoView videoView;
     ImageButton pipView;
 
-    CircularImageView circularImageView;
-    //private PictureInPictureParams.Builder picturePictureParams;
-    private static final String TAG = "PIP_TAG";
+    ImageView circularImageView;
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,10 +70,24 @@ public class TvDetailActivity extends AppCompatActivity {
         Glide.with(this).load(tvIcon).into(circularImageView);
 
         videoView = findViewById(R.id.ExovideoView);
-            pipView = findViewById(R.id.pip_view);
+        pipView = findViewById(R.id.pip_view_new);
+        pipView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    Display display = getWindowManager().getDefaultDisplay();
+                    Point size = new Point();
+                    display.getSize(size);
+                    int width = 300;
+                    int height = 350;
 
-
-
+                    Rational aspectRatio = new Rational(width, height);
+                    PictureInPictureParams.Builder mPictureInPictureParams = new PictureInPictureParams.Builder();
+                    mPictureInPictureParams.setAspectRatio(aspectRatio).build();
+                    enterPictureInPictureMode(mPictureInPictureParams.build());
+                }
+            }
+        });
 
 
         videoView.setBackListener((view, isPortrait) -> {
@@ -97,13 +110,13 @@ public class TvDetailActivity extends AppCompatActivity {
 
         final SimpleMediaSource mediaSource = new SimpleMediaSource(liveUrl);
 
-        mediaSource.setDisplayName("VideoPlaying");
+        mediaSource.setDisplayName(getString(R.string.video_playing));
 
         List<ExoMediaSource.Quality> qualities = new ArrayList<>();
         ExoMediaSource.Quality quality;
 
         for (int i = 0; i < 6; i++) {
-            SpannableString spannableString = new SpannableString("Quality" + i);
+            SpannableString spannableString = new SpannableString(getString(R.string.quality) + i);
             if (i % 2 == 0) {
                 ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.YELLOW);
                 spannableString.setSpan(colorSpan, 0, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
@@ -144,54 +157,6 @@ public class TvDetailActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
     }
-
-
-
-
-//    private void pictureToPictureMode() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            Log.d(TAG, "support PIP");
-//            try {
-//
-//
-//                Rational aspectRatio = new Rational(videoView.getWidth(), videoView.getHeight());
-//                picturePictureParams.setAspectRatio(aspectRatio).build();
-//                enterPictureInPictureMode(picturePictureParams.build());
-//            } catch (IllegalStateException e) {
-//
-//            }
-//        } else {
-//            Log.d(TAG, "unsupport PIP");
-//        }
-//
-//    }
-//
-//    @Override
-//    protected void onUserLeaveHint() {
-//        super.onUserLeaveHint();
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//            if (!isInPictureInPictureMode()) {
-//                Log.d(TAG, "onUserLeaveHint: was not in PIP");
-//            } else {
-//                Log.d(TAG, "onUserLeaveHint: already in pip");
-//            }
-//        }
-//    }
-//
-//    @Override
-//    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode, Configuration newConfig) {
-//        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig);
-//        if (!isInPictureInPictureMode) {
-//            Log.d(TAG, "onPictureInPictureModeChanged: Enterd PIP");
-//            pipView.setVisibility(View.VISIBLE);
-//            getApplication().startActivity(new Intent(this, getClass())
-//                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-//        } else {
-//            Log.d(TAG, "onPictureInPictureModeChanged: exit PIP");
-//            pipView.setVisibility(View.GONE);
-//        }
-//    }
-
 
     @Override
     protected void onStart() {

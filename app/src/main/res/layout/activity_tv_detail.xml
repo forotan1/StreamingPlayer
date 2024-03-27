@@ -1,111 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".Utilities.TvDetailActivity"
-    android:layoutDirection="locale">
-    <RelativeLayout
+    android:layoutDirection="locale"
+    tools:context=".Utilities.TvDetailActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:id="@+id/tv_detail_cover"
-
-        >
+        android:layout_height="match_parent"
+        android:id="@+id/ExovideoView_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
         <com.jarvanmo.exoplayerview.ui.ExoVideoView
             android:id="@+id/ExovideoView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:controller_display_mode="all"
-            app:resize_mode="fill"
-            app:use_artwork="true"
+            app:controller_layout_id="@layout/custom_controler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:resize_mode="fit"
+            app:use_artwork="true">
 
-            />
-
-    </RelativeLayout>
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tv_detail_cover">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_icon_title"
-            >
-
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@drawable/lemar"
-                app:civ_border_color="@color/icon_bg"
-                app:civ_border_width="10dp"
-                app:civ_shadow="true"
-                android:id="@+id/about_profile_pic"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="45dp"
-                android:layout_gravity="bottom">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Channel Name"
-                    android:textSize="30sp"
-                    android:textColor="@color/dark_orange"
-                    android:textStyle="bold"
-                    android:id="@+id/detailA_tv_title"
-
-                    />
-
-            </LinearLayout>
-        </LinearLayout>
+        </com.jarvanmo.exoplayerview.ui.ExoVideoView>
 
 
-        <ScrollView
-            android:id="@+id/scrollView1"
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/cardView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ExovideoView_layout">
+
+        <ImageView
+            android:id="@+id/about_profile_pic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/tv_icon_title">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
+            android:padding="3dp"
+            android:src="@drawable/facebook_ic" />
 
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="20sp"
-                    android:id="@+id/tv_info"
-                    android:textColor="@color/tint_default_bg"
-                    android:textSize="16sp"
-                    android:autoSizeTextType="uniform"
-                    />
+    </androidx.cardview.widget.CardView>
 
-            </LinearLayout>
-        </ScrollView>
+    <TextView
+        android:id="@+id/detailA_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="84dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Channel Name"
+        android:textColor="@color/dark_orange"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.725"
+        app:layout_constraintStart_toEndOf="@+id/cardView" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
 
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/tint_default_bg"
+            android:textSize="16sp" />
+    </ScrollView>
 
-    </RelativeLayout>
 
-
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

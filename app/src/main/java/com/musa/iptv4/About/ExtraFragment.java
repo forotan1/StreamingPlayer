@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -37,6 +38,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import com.musa.iptv4.BuildConfig;
+import com.musa.iptv4.Utilities.librariesLicenses;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -48,12 +50,12 @@ public class ExtraFragment extends Fragment {
     private static final String PROFILE_IMAGE_PATH = "profile_image_path";
     private static final int PICK_IMAGE_REQUEST = 1;
     String imgDecodableString;
-    ConstraintLayout changeLang, changeMode, donate, share_app, suggest;
+    ConstraintLayout changeLang, changeMode, donate, share_app, weblinks;
     TextView theme_name, language_name, user_name, version_text;
     private Context mContext;
     private RadioGroup themeGroup, languageRadioGroup;
     SharedPreferences saveName, saveProfilePic;
-    ImageView profilePic, faceBookImage;
+    ImageView profilePic, faceBookIcon, telegramIcon, youTubeIcon, tiktokIcon, theme_ic;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -76,6 +78,14 @@ public class ExtraFragment extends Fragment {
 
 
         profilePic = view.findViewById(R.id.profile_pic);
+        faceBookIcon = view.findViewById(R.id.facebook_icon);
+        telegramIcon = view.findViewById(R.id.telegram_icon);
+        youTubeIcon = view.findViewById(R.id.youTube_icon);
+        tiktokIcon = view.findViewById(R.id.tiktok_icon);
+        theme_ic = view.findViewById(R.id.theme_icon);
+
+        socialMediaLinks();
+
         saveProfilePic = requireActivity().getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE);
 
         String imagePath = saveProfilePic.getString(PROFILE_IMAGE_PATH, null );
@@ -132,21 +142,24 @@ public class ExtraFragment extends Fragment {
         switch (DarkModeHelper.getInstance().getPref(getActivity().getBaseContext())){
             case "dark":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                // changeMode.setBackground(getResources().getDrawable(night_icon));
-                //theme_name.setText(getText(R.string.dark));
+                theme_ic.setBackgroundResource(R.drawable.dark_ic);
+                theme_name.setText(R.string.dark);
+
 
                 break;
             case "light":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                // changeMode.setBackground(getResources().getDrawable(day_icon));
-                //theme_name.setText(getText(R.string.light));
+                theme_ic.setBackgroundResource(R.drawable.light_ic);
+                theme_name.setText(R.string.light);
+
+
                 break;
             default:
                 if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                    // changeMode.setBackground(getResources().getDrawable(day_icon));
-                    // theme_name.setText(getText(R.string.system_default));
-                    // getActivity().setContentView(R.layout.activity_about);
+                    theme_ic.setBackgroundResource(R.drawable.dark_ic);
+                    theme_name.setText(R.string.system_default);
+
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
                 }
@@ -207,16 +220,28 @@ public class ExtraFragment extends Fragment {
 
             }
         });
+
+
         share_app = view.findViewById(R.id.share_layout);
         share_app.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent shaIntent = new Intent(Intent.ACTION_SEND);
-                String sharedBody = "Download the App from this link https://farsitv.000webhostapp.com/";
+                String sharedBody = "Download the App from this link: https://forotan1.github.io/";
                 shaIntent.setType("text/plain");
                 shaIntent.putExtra(Intent.EXTRA_SUBJECT, "Download the App");
                 shaIntent.putExtra(Intent.EXTRA_TEXT, sharedBody);
                 startActivity(Intent.createChooser(shaIntent, "share via"));
+            }
+        });
+
+        weblinks = view.findViewById(R.id.open_source_link);
+        weblinks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent link = new Intent(getContext(), librariesLicenses.class);
+                startActivity(link);
             }
         });
 
@@ -232,6 +257,67 @@ public class ExtraFragment extends Fragment {
 
         return view;
 
+    }
+
+    private void socialMediaLinks() {
+        faceBookIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSocialMediaProfile("facebook", "https://www.facebook.com/musa.forotan");
+            }
+        });
+
+
+        youTubeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSocialMediaProfile("youtube", "https://youtube.com/@TheMusaTalk");
+            }
+        });
+
+        tiktokIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSocialMediaProfile("tiktok", "https://www.tiktok.com/@musaforotan");
+            }
+        });
+
+        telegramIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSocialMediaProfile("telegram", "https://t.me/forotan01");
+            }
+        });
+    }
+
+    private void openSocialMediaProfile(String socialMedia, String profileUrl) {
+        String packageName;
+        switch (socialMedia) {
+            case "facebook":
+                packageName = "com.facebook.katana";
+                break;
+            case "youtube":
+                packageName = "com.google.android.youtube";
+                break;
+            case "tiktok":
+                packageName = "com.zhiliaoapp.musically";
+                break;
+            case "telegram":
+                packageName = "org.telegram.messenger";
+                break;
+            default:
+                return;
+        }
+
+        // Check if the app is installed
+        Intent intent = getActivity().getPackageManager().getLaunchIntentForPackage(packageName);
+        if (intent != null) {
+            // If the app is installed, open the social media profile in the app
+            startActivity(intent);
+        } else {
+            // If the app is not installed, open the social media profile in the web browser
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(profileUrl)));
+        }
     }
 
     private void changeLanguage(){

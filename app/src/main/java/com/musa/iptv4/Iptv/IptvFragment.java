@@ -35,7 +35,7 @@ public class IptvFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.activity_ip_tv, container, false);
+        final View view = inflater.inflate(R.layout.fragment_iptv, container, false);
 
         MovableFloatingActionButton fab =  view.findViewById(R.id.fab);
         CoordinatorLayout.LayoutParams mp = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();

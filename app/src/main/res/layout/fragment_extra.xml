@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -29,17 +30,30 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/profile_pic"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_pic_card"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:padding="20dp"
+            app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="@color/colorPrimary"
             app:layout_constraintBottom_toTopOf="@id/user_name_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.050000012"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed" >
+            <ImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/tiktok_ic"
+                android:layout_gravity="center"
+                />
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/user_name_text"
@@ -54,7 +68,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile_pic" />
+            app:layout_constraintTop_toBottomOf="@id/profile_pic_card" />
 
         <TextView
             android:id="@+id/settings_text"
@@ -92,7 +106,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/mainBackground"
+                android:background="@color/card_bg"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -104,15 +118,25 @@
                     android:padding="5dp"
                     >
 
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/theme_icon"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/theme_card"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:paddingTop="20dp"
-                        android:src="@drawable/ic_af"
+                        app:cardCornerRadius="10dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintBottom_toBottomOf="parent">
+                        <ImageView
+                            android:id="@+id/theme_icon"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            />
+
+                    </androidx.cardview.widget.CardView>
+
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/theme_text"
@@ -124,7 +148,7 @@
                         android:textSize="15sp"
                         android:textStyle="normal"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/theme_icon"
+                        app:layout_constraintStart_toEndOf="@id/theme_card"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.461" />
 
@@ -176,15 +200,27 @@
 
                     >
 
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/lang_icon"
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/lang_card"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:paddingTop="20dp"
-                        android:src="@drawable/ic_af"
+                        app:cardCornerRadius="10dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintBottom_toBottomOf="parent">
+                        <ImageView
+                            android:id="@+id/lang_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="5dp"
+                            android:src="@drawable/language_ic"
+                            android:layout_gravity="center"
+                            />
+
+                    </androidx.cardview.widget.CardView>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/lang_text"
@@ -196,7 +232,7 @@
                         android:textSize="15sp"
                         android:textStyle="normal"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/lang_icon"
+                        app:layout_constraintStart_toEndOf="@id/lang_card"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.461" />
 
@@ -254,28 +290,41 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/mainBackground"
+                android:background="@color/card_bg"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="10dp"
+                >
 
                 <!-- Donate CardView"/>-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:id="@+id/donate_layout"
-
+                    android:id="@+id/open_source_link"
                     >
 
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/donate_icon"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/open_source_card"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:paddingTop="20dp"
-                        android:src="@drawable/ic_af"
+                        app:cardCornerRadius="10dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintBottom_toBottomOf="parent">
+                        <ImageView
+                            android:id="@+id/open_source_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="7dp"
+                            android:src="@drawable/copyright_ic"
+                            android:layout_gravity="center"
+                            />
+
+                    </androidx.cardview.widget.CardView>
+
+
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/donate_text"
@@ -287,7 +336,7 @@
                         android:textSize="15sp"
                         android:textStyle="normal"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/donate_icon"
+                        app:layout_constraintStart_toEndOf="@id/open_source_card"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.461" />
 
@@ -327,15 +376,25 @@
 
                     >
 
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/share_icon"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/share_card"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:paddingTop="20dp"
-                        android:src="@drawable/ic_af"
+                        app:cardCornerRadius="10dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintBottom_toBottomOf="parent">
+                        <ImageView
+                            android:id="@+id/share_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="7dp"
+                            android:src="@drawable/share_ic"
+                            android:layout_gravity="center"
+                            />
+
+                    </androidx.cardview.widget.CardView>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/share_text"
@@ -347,7 +406,7 @@
                         android:textSize="15sp"
                         android:textStyle="normal"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/share_icon"
+                        app:layout_constraintStart_toEndOf="@id/share_card"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.461" />
 
@@ -370,15 +429,15 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                <View
-                    android:id="@+id/line3"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/dark_orange"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
+<!--                <View-->
+<!--                    android:id="@+id/line3"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:background="@color/dark_orange"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_marginBottom="5dp"/>-->
 
-                <!-- Suggest CardView"/>-->
+                <!-- Suggest CardView"
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -387,15 +446,25 @@
 
                     >
 
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/suggest_icon"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/suggest_card"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:paddingTop="20dp"
-                        android:src="@drawable/ic_af"
+                        app:cardCornerRadius="50dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintBottom_toBottomOf="parent">
+                        <ImageView
+                            android:id="@+id/suggest_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="7dp"
+                            android:src="@drawable/dark_ic"
+                            />
+
+                    </androidx.cardview.widget.CardView>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/suggest_text"
@@ -407,7 +476,7 @@
                         android:textSize="15sp"
                         android:textStyle="normal"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/suggest_icon"
+                        app:layout_constraintStart_toEndOf="@id/suggest_card"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.461"/>
 
@@ -428,6 +497,7 @@
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+                />-->
 
             </LinearLayout>
 
@@ -469,65 +539,113 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:background="@color/mainBackground"
+                android:background="@color/card_bg"
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <!-- Socail Media CardView"/>-->
+                <!-- Social Media CardView"/>-->
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/socail_layout"
+                    android:id="@+id/social_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp">
 
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/facebook_icon"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/facebook_card"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:paddingTop="20dp"
-                        android:src="@drawable/ic_af"
+                        app:cardCornerRadius="50dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/tiktok_icon"
+                        app:layout_constraintEnd_toStartOf="@+id/tiktok_card"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:layout_editor_absoluteY="5dp" />
+                        tools:layout_editor_absoluteY="5dp" >
 
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/tiktok_icon"
+                        <ImageView
+                            android:id="@+id/facebook_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/facebook_ic"
+                            android:padding="7dp"
+                            android:layout_gravity="center"
+                            />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/tiktok_card"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:paddingTop="20dp"
-                        android:src="@drawable/ic_af"
+                        android:padding="20dp"
+                        app:cardCornerRadius="50dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/telegram_icon"
+                        app:layout_constraintEnd_toStartOf="@+id/telegram_card"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/facebook_icon"
-                        tools:layout_editor_absoluteY="5dp" />
+                        app:layout_constraintStart_toEndOf="@+id/facebook_card"
+                        tools:layout_editor_absoluteY="5dp" >
+                        <ImageView
+                            android:id="@+id/tiktok_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/tiktok_ic"
+                            android:padding="7dp"
+                            android:layout_gravity="center"
+                            />
 
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/telegram_icon"
+                    </androidx.cardview.widget.CardView>
+
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/telegram_card"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:paddingTop="20dp"
-                        android:src="@drawable/ic_af"
+                        app:cardCornerRadius="50dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/finstagram_icon"
+                        app:layout_constraintEnd_toStartOf="@+id/youTube_card"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/tiktok_icon"
-                        tools:layout_editor_absoluteY="5dp" />
+                        app:layout_constraintStart_toEndOf="@+id/tiktok_card"
+                        tools:layout_editor_absoluteY="5dp">
+                        <ImageView
+                            android:id="@+id/telegram_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/telegram_ic"
+                            android:padding="7dp"
+                            android:layout_gravity="center"
+                            />
 
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/finstagram_icon"
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/youTube_card"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:paddingTop="20dp"
-                        android:src="@drawable/ic_af"
+                        app:cardCornerRadius="50dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/telegram_icon"
-                        tools:layout_editor_absoluteY="5dp" />
+                        app:layout_constraintStart_toEndOf="@+id/telegram_card"
+                        tools:layout_editor_absoluteY="5dp">
+
+                        <ImageView
+                            android:id="@+id/youTube_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/youtube_ic"
+                            android:padding="7dp"
+                            android:layout_gravity="center"
+                            />
+
+
+                        </androidx.cardview.widget.CardView>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -545,6 +663,7 @@
             app:layout_constraintHorizontal_bias="0.08"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/social_meda_items"
+            android:background="@color/colorPrimary"
 
             />
 

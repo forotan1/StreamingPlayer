@@ -44,10 +44,12 @@
     <string name="appearance_arrow"><![CDATA[>]]></string>
     <string name="open_source">نرم افزار های سورز باز</string>
     <string name="share_text">به اشتراک گذاری</string>
-    <string name="suggest_text">به اشتراک گذاری</string>
+    <string name="suggest_text">ویب سایت</string>
     <string name="app_version">نسخه برنامه</string>
     <string name="write_name">نام خد را وارد کنید</string>
     <string name="follow_us_online">جهت کمک مالی یا نماس ما را دنبال کنید</string>
     <string name="ok">تايید</string>
     <string name="write_again">اسم کاربر وجود ندارد</string>
+    <string name="quality">کیفت</string>
+    <string name="video_playing">در حال پخش</string>
 </resources>

@@ -3,18 +3,18 @@
       >
         <item
             android:id="@+id/liveFragment"
-            android:icon="@drawable/ic_live_tv"
+            android:icon="@drawable/live_tv_ic"
             android:title="@string/live_tv"
             />
         <item
             android:id="@+id/iptvFragment"
-            android:icon="@drawable/ic_ip_tv"
+            android:icon="@drawable/iptv_ic"
             android:title="@string/ip_tv"
 
             />
         <item
             android:id="@+id/extraFragment"
-            android:icon="@drawable/ic_about"
+            android:icon="@drawable/more_ic"
             android:title="@string/about"
             />
 </menu>

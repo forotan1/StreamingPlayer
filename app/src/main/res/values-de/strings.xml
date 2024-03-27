@@ -45,12 +45,14 @@
     <string name="appearance_arrow"><![CDATA[>]]></string>
     <string name="open_source">Spende</string>
     <string name="share_text">Share</string>
-    <string name="suggest_text">Mehr App von Dev</string>
+    <string name="suggest_text">Web seite</string>
     <string name="app_version">App version</string>
     <string name="write_name">Schreib deine Name</string>
     <string name="follow_us_online">Folgen uns online</string>
     <string name="ok">Okay</string>
     <string name="write_again">keine Benuzername</string>
+    <string name="quality">qualitäte</string>
+    <string name="video_playing">Playing</string>
 
 
 </resources>

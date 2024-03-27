@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Iptv.IptvFragment">
+    android:id="@+id/iptv_root"
+    android:background="@color/colorPrimary"
+    android:layoutDirection="locale">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/dev_support"/>
+        android:layout_marginTop="15dp">
+        <!--            <include-->
+        <!--                layout="@layout/iptv_main_content"-->
+        <!--                android:id="@+id/empty_view3"/>-->
 
-</FrameLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tab_tv_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            android:background="@color/colorPrimary"
+            android:numColumns="auto_fit"/>
+
+
+
+        <com.musa.iptv4.Utilities.MovableFloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="top|center"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="27dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_baseline_add_circle_24"
+            app:backgroundTint="@color/dark_orange"
+            app:fabSize="normal" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

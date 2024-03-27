@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimary">#2E90D1</color>
     <color name="colorPrimaryDark">#FFC107</color>
     <color name="colorAccent">#ec5e32</color>
     <color name="colorWhite">#fff</color>
-    <color name="card_bg">#2B4E6A</color>
+    <color name="card_bg">#2974B8</color>
     <color name="colorBlack">#000000</color>
-    <color name="mainBackground">#2196F3</color>
+    <color name="mainBackground">#2974B8</color>
+
     <color name="barColor">#fff</color>
     <color name="buttonColor">#0e0e0e</color>
     <color name="BoldTextColor">#FF5722</color>
@@ -15,13 +16,13 @@
     <color name="textBgColor">#fff</color>
     <color name="dark_orange">#FF5722</color>
     <color name="transparent">#00000000</color>
-    <color name="Gray_text_color">#3D3D3D</color>
-    <color name="text_lighter">#A3A3A3</color>
+    <color name="Gray_text_color">#DADADA</color>
+    <color name="text_lighter">#fff</color>
 
 
     <!--Card View -->
 
-    <color name="icon_bg">#FF9800</color>
+    <color name="icon_bg">#C5C1C1</color>
     <color name="icon_text_bg">#1a1a1a</color>
     <color name="transistor_gold">#FFE6BA64</color>
     <color name="transistor_grey_very_light">#FFEFEDEB</color>
@@ -30,7 +31,7 @@
 
     <!--Navigation Bar-->
 
-    <color name="naviBar_background">#efefef</color>
+    <color name="naviBar_background">#2974B8</color>
     <color name="tint_selected_bg">#ec5e32</color>
     <color name="tint_unSelected_bg">#808080</color>
     <color name="tint_default_bg">#808080</color>
@@ -52,5 +53,11 @@
 
     <color name="colorEndBackground">#50FFFFFF</color>
     <color name="colorLightText">#ECECEC</color>
+    <color name="background_gradient_start">#000000</color>
+    <color name="background_gradient_end">#DDDDDD</color>
+    <color name="fastlane_background">#0096a6</color>
+    <color name="search_opaque">#ffaa3f</color>
+    <color name="selected_background">#ffaa3f</color>
+    <color name="default_background">#3d3d3d</color>
 
 </resources>

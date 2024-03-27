@@ -10,10 +10,10 @@
         android:id="@+id/action_delete"
         android:orderInCategory="101"
         android:title="@string/delete_item"
-        android:icon="@drawable/ic_about"/>
+        android:icon="@drawable/more_ic"/>
     <item
         android:id="@+id/action_play"
         android:orderInCategory="102"
         android:title="@string/play_item"
-        android:icon="@drawable/ic_about"/>
+        android:icon="@drawable/more_ic"/>
 </menu>
