@@ -3,13 +3,13 @@ this is my first Android project, it means it has many bugs
 I am working on this project just for learning purpose 
 <h3> Features and detail </h3>
 
-- online Streaming player based with google exoPlayer library which is able to play almost all audio and video code.
+- online Streaming player based on google exoPlayer library which is able to play almost all audio and video code.
 - It contains recyclerView and cardView layout.
 - firebase  Database server for fetching media links
 - SQLite database where user can store links of media on device local memory.
--  Dark and light mode
--  localization within App ( User can change the language of App )
--  PIP ( picture in picture) in and out of the App
+- Dark and light mode
+- localization within App ( User can change the language of App )
+- PIP ( picture in picture) in and out of the App
 
 <h3> Features which will be added in future updates </h3>
 
