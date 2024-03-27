@@ -9,10 +9,11 @@ I am working on this project just for learning purpose
 - SQLite database where user can store links of media on device local memory.
 -  Dark and light mode
 -  localization within App ( User can change the language of App )
+-  PIP ( picture in picture) in and out of the App
 
 <h3> Features which will be added in future updates </h3>
 
-- PIP ( picture in picture) in and out of the App
+
 - Intro or welcome screen
 - Better UI/UX
 
