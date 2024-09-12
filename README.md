@@ -18,6 +18,7 @@ I am working on this project just for learning purpose
 - Better UI/UX
 - Android TV Suport with new UI for Android TV
 - Moving from Java to Kotlin special Jetcompose
+- Add Stream Quailty selection ( The list will be stored in Map(<name, qualityLink>) 
 
 <h3> Screenshoots</h3>
   
