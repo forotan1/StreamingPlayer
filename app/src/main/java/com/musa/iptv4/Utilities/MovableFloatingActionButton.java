@@ -1,24 +1,16 @@
 package com.musa.iptv4.Utilities;
-
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
+import timber.log.Timber;
 
 public class MovableFloatingActionButton extends FloatingActionButton implements View.OnTouchListener {
 
     private final static float CLICK_DRAG_TOLERANCE = 10; // Often, there will be a slight, unintentional, drag when the user taps the FAB, so we need to account for this.
-
     private float downRawX, downRawY;
     private float dX, dY;
-
-    private CoordinatorLayout.LayoutParams coordinatorLayout;
 
     public MovableFloatingActionButton(Context context) {
         super(context);
@@ -46,7 +38,7 @@ public class MovableFloatingActionButton extends FloatingActionButton implements
         View viewParent;
         switch (motionEvent.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("MovableFAB", "ACTION_DOWN");
+                Timber.tag("MovableFAB").d("ACTION_DOWN");
                 downRawX = motionEvent.getRawX();
                 downRawY = motionEvent.getRawY();
                 dX = view.getX() - downRawX;
@@ -103,7 +95,7 @@ public class MovableFloatingActionButton extends FloatingActionButton implements
 
                 //check if is nearest Y o X
                 if(borderX>borderY) {
-                    if(view.getY()>viewParent2.getHeight()/2) { //view near Bottom
+                    if(view.getY()> (float) viewParent2.getHeight() /2) { //view near Bottom
                         finalY = viewParent2.getBottom() - view.getHeight();
                         finalY = Math.min(10, finalY) - fab_margin; // Don't allow the FAB past the bottom of the parent
                        // viewParent2.getHeight() - view.getHeight()
@@ -120,7 +112,7 @@ public class MovableFloatingActionButton extends FloatingActionButton implements
                         finalX=viewParent2.getRight()- view.getWidth()-fab_margin;
                 }
                 else {  //view near Right
-                    if(view.getX()>viewParent2.getWidth()/2) {
+                    if(view.getX()> (float) viewParent2.getWidth() /2) {
                         finalX = viewParent2.getRight() - view.getWidth();
                         finalX = Math.max(0, finalX) - fab_margin; // Don't allow the FAB past the left hand side of the parent
                     }
@@ -142,7 +134,7 @@ public class MovableFloatingActionButton extends FloatingActionButton implements
                         .setDuration(400)
                         .start();
 
-                Log.d("MovableFAB", "ACTION_UP");
+                Timber.tag("MovableFAB").d("ACTION_UP");
                 return false;
 
             // A drag consumed
@@ -151,12 +143,6 @@ public class MovableFloatingActionButton extends FloatingActionButton implements
         }
 
     }
-
-    public CoordinatorLayout.LayoutParams getCoordinatorLayout() {
-        return coordinatorLayout;
-    }
-
-    public void setCoordinatorLayout(CoordinatorLayout.LayoutParams coordinatorLayout) {
-        this.coordinatorLayout = coordinatorLayout;
+    public void setCoordinatorLayout() {
     }
 }

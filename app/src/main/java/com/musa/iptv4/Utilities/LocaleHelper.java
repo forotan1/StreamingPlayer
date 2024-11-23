@@ -8,8 +8,6 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
 
-import androidx.core.view.ViewCompat;
-
 import java.util.Locale;
 
 /**
@@ -26,11 +24,6 @@ public class LocaleHelper {
 
 	public static Context onAttach(Context context) {
 		String lang = getPersistedData(context, Locale.getDefault().getLanguage());
-		return setLocale(context, lang);
-	}
-
-	public static Context onAttach(Context context, String defaultLanguage) {
-		String lang = getPersistedData(context, defaultLanguage);
 		return setLocale(context, lang);
 	}
 

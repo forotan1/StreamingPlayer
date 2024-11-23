@@ -75,11 +75,9 @@ public class IranTab extends Fragment {
         tabRecyclerView.setLayoutManager(tLayoutManager);
 
 
-
         retrievingData();
 
         return view;
-
 
 
     }

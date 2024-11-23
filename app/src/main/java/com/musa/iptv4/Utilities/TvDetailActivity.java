@@ -36,12 +36,9 @@ import static com.musa.iptv4.LiveTv.Afghanistan.AfghanTab.EXTRA_LIVE_URL;
 import static com.musa.iptv4.LiveTv.Afghanistan.AfghanTab.EXTRA_TITLE;
 
 public class TvDetailActivity extends AppCompatActivity {
-
     private ExoVideoView videoView;
     ImageButton pipView;
-
     ImageView circularImageView;
-
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -126,7 +123,7 @@ public class TvDetailActivity extends AppCompatActivity {
         videoView.play(mediaSource);
 
     }
-    //}
+
 
 
     private void changeToPortrait() {
@@ -180,13 +177,11 @@ public class TvDetailActivity extends AppCompatActivity {
             videoView.pause();
         }
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         videoView.releasePlayer();
     }
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

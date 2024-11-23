@@ -39,7 +39,7 @@ public class IptvFragment extends Fragment {
 
         MovableFloatingActionButton fab =  view.findViewById(R.id.fab);
         CoordinatorLayout.LayoutParams mp = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
-        fab.setCoordinatorLayout(mp);
+        fab.setCoordinatorLayout();
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

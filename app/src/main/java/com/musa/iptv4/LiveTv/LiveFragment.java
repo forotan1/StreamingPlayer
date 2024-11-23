@@ -29,7 +29,7 @@ public class LiveFragment extends Fragment {
         // Required empty public constructor
     }
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
-            Bundle savedInstanceState) {
+    Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_live, container, false);
     }
